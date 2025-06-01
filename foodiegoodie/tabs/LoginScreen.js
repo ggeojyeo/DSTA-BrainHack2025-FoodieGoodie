@@ -1,8 +1,10 @@
 import React from "react";
 import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { colours } from "../utils/colours";
 
 export default function LoginScreen() {
+    const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Image source={require("../assets/FoodieGoodieLogo/withoutName.png")} style={styles.logo} />
@@ -12,9 +14,12 @@ export default function LoginScreen() {
       <TextInput style={styles.input} placeholder="email@domain.com" keyboardType="email-address" />
       <TextInput style={styles.input} placeholder="password..." secureTextEntry />
 
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Login</Text>
-      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate("Question1")}
+      >
+    <Text style={styles.buttonText}>Login</Text>
+</TouchableOpacity>
 
       <TouchableOpacity>
         <Text style={styles.forgotText}>Forgot Password?</Text>
