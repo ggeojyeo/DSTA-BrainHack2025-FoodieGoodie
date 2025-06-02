@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const StoreSchema = new mongoose.Schema({
-
     id: {
         type: String,
         required: [true, "Store ID is required"],
