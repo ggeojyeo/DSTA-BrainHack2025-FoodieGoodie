@@ -8,7 +8,7 @@ const sampleItems = [
         image: 'https://coldstorage.com.sg/medias/101640975.jpg',
         name: "Chew's Fresh Eggs Grade AA 10s",
         unitQuantity: 10,
-        unitType: 'pcs',
+        unitType: '1'
     },
     {
         id: 'egg2',
@@ -19,7 +19,7 @@ const sampleItems = [
         image: 'https://coldstorage.com.sg/medias/101658993.jpg',
         name: 'Seng Choon Farm Fresh Eggs 10s',
         unitQuantity: 10,
-        unitType: 'pcs',
+        unitType: '1'
     },
     {
         id: 'egg3',
@@ -30,7 +30,7 @@ const sampleItems = [
         image: 'https://www.fairprice.com.sg/medias/13190663.jpg',
         name: 'Pasar Fresh Eggs 10s',
         unitQuantity: 10,
-        unitType: 'pcs',
+        unitType: '1'
     },
     {
         id: 'egg4',
@@ -41,7 +41,7 @@ const sampleItems = [
         image: 'https://www.komalasvegemart.com/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/d/a/dasoon-high-quality-fresh-eggs-10s.jpg',
         name: 'Dasoon Omega-3 Eggs 10s',
         unitQuantity: 10,
-        unitType: 'pcs',
+        unitType: '1'
     },
     {
         id: 'egg5',
@@ -52,7 +52,7 @@ const sampleItems = [
         image: 'https://kiasumart.com/wp-content/uploads/2021/04/Kampong-Fresh-Eggs-10s.jpg',
         name: 'Kampong Free Range Eggs 10s',
         unitQuantity: 10,
-        unitType: 'pcs',
+        unitType: '1'
     },
     {
         id: 'milk1',
@@ -63,7 +63,7 @@ const sampleItems = [
         image: 'https://www.vshop.sg/wp-content/uploads/2019/11/Meiji-Fresh-Milk-2L.jpg',
         name: 'Meiji Fresh Milk 2L',
         unitQuantity: 2,
-        unitType: 'L',
+        unitType: 'L'
     },
     {
         id: 'milk2',
@@ -74,7 +74,7 @@ const sampleItems = [
         image: 'https://shop.villamarket.com/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/m/a/magnolia-fresh-milk-2l.jpg',
         name: 'Magnolia Fresh Milk 2L',
         unitQuantity: 2,
-        unitType: 'L',
+        unitType: 'L'
     },
     {
         id: 'milk3',
@@ -85,7 +85,7 @@ const sampleItems = [
         image: 'https://coldstorage.com.sg/medias/101643584.jpg',
         name: 'Farmhouse Fresh Milk 2L',
         unitQuantity: 2,
-        unitType: 'L',
+        unitType: 'L'
     },
     {
         id: 'milk4',
@@ -96,7 +96,7 @@ const sampleItems = [
         image: null,
         name: "Paul's Fresh Milk 2L",
         unitQuantity: 2,
-        unitType: 'L',
+        unitType: 'L'
     },
     {
         id: 'milk5',
@@ -107,7 +107,7 @@ const sampleItems = [
         image: null,
         name: 'Cowhead Fresh Milk 2L',
         unitQuantity: 2,
-        unitType: 'L',
+        unitType: 'L'
     },
     {
         id: 'bread1',
@@ -117,8 +117,8 @@ const sampleItems = [
         country: 'Singapore',
         image: null,
         name: 'Gardenia White Bread 600g',
-        unitQuantity: 600,
-        unitType: 'g',
+        unitQuantity: 0.6,
+        unitType: 'kg'
     },
     {
         id: 'bread2',
@@ -128,8 +128,8 @@ const sampleItems = [
         country: 'Singapore',
         image: null,
         name: 'Sunshine Soft White Bread 600g',
-        unitQuantity: 600,
-        unitType: 'g',
+        unitQuantity: 0.6,
+        unitType: 'kg'
     },
     {
         id: 'bread3',
@@ -139,8 +139,8 @@ const sampleItems = [
         country: 'Singapore',
         image: null,
         name: 'Holsum Soft White Bread 600g',
-        unitQuantity: 600,
-        unitType: 'g',
+        unitQuantity: 0.6,
+        unitType: 'kg'
     },
     {
         id: 'bread4',
@@ -151,7 +151,7 @@ const sampleItems = [
         image: null,
         name: 'Mission Wraps Original 8s',
         unitQuantity: 8,
-        unitType: 'pcs',
+        unitType: '1'
     },
     {
         id: 'bread5',
@@ -161,8 +161,8 @@ const sampleItems = [
         country: 'Singapore',
         image: null,
         name: 'Gardenia Wholemeal Bread 600g',
-        unitQuantity: 600,
-        unitType: 'g',
+        unitQuantity: 0.6,
+        unitType: 'kg'
     },
     {
         id: 'rice1',
@@ -173,7 +173,7 @@ const sampleItems = [
         image: null,
         name: 'Golden Phoenix Thai Fragrant Rice 5kg',
         unitQuantity: 5,
-        unitType: 'kg',
+        unitType: 'kg'
     },
     {
         id: 'rice2',
@@ -184,7 +184,7 @@ const sampleItems = [
         image: null,
         name: 'Royal Umbrella Thai Hom Mali Rice 5kg',
         unitQuantity: 5,
-        unitType: 'kg',
+        unitType: 'kg'
     },
     {
         id: 'rice3',
@@ -195,7 +195,7 @@ const sampleItems = [
         image: null,
         name: 'Sakura Jasmine Rice 5kg',
         unitQuantity: 5,
-        unitType: 'kg',
+        unitType: 'kg'
     },
     {
         id: 'rice4',
@@ -206,7 +206,7 @@ const sampleItems = [
         image: null,
         name: 'SongHe AAA Thai Fragrant Rice 5kg',
         unitQuantity: 5,
-        unitType: 'kg',
+        unitType: 'kg'
     },
     {
         id: 'rice5',
@@ -217,7 +217,7 @@ const sampleItems = [
         image: null,
         name: 'Simei Thai Fragrant Rice 5kg',
         unitQuantity: 5,
-        unitType: 'kg',
+        unitType: 'kg'
     },
     {
         id: 'snack1',
@@ -227,8 +227,8 @@ const sampleItems = [
         country: 'Malaysia',
         image: null,
         name: 'Jack n Jill Potato Chips Original 60g',
-        unitQuantity: 60,
-        unitType: 'g',
+        unitQuantity: 0.06,
+        unitType: 'kg'
     },
     {
         id: 'snack2',
@@ -238,8 +238,8 @@ const sampleItems = [
         country: 'USA',
         image: null,
         name: 'Pringles Sour Cream 110g',
-        unitQuantity: 110,
-        unitType: 'g',
+        unitQuantity: 0.11,
+        unitType: 'kg'
     },
     {
         id: 'snack3',
@@ -249,8 +249,8 @@ const sampleItems = [
         country: 'Japan',
         image: null,
         name: 'Calbee Hot & Spicy Potato Chips 80g',
-        unitQuantity: 80,
-        unitType: 'g',
+        unitQuantity: 0.08,
+        unitType: 'kg'
     },
     {
         id: 'snack4',
@@ -260,8 +260,8 @@ const sampleItems = [
         country: 'USA',
         image: null,
         name: "Lay's Classic Potato Chips 170g",
-        unitQuantity: 170,
-        unitType: 'g',
+        unitQuantity: 0.17,
+        unitType: 'kg'
     },
     {
         id: 'snack5',
@@ -271,8 +271,8 @@ const sampleItems = [
         country: 'USA',
         image: null,
         name: 'Ritz Cheese Crackers 190g',
-        unitQuantity: 190,
-        unitType: 'g',
+        unitQuantity: 0.19,
+        unitType: 'kg'
     },
     {
         id: 'beverage1',
@@ -282,8 +282,8 @@ const sampleItems = [
         country: 'Singapore',
         image: null,
         name: 'Pokka Green Tea No Sugar 500ml',
-        unitQuantity: 500,
-        unitType: 'ml',
+        unitQuantity: 0.5,
+        unitType: 'L'
     },
     {
         id: 'beverage2',
@@ -293,8 +293,8 @@ const sampleItems = [
         country: 'Singapore',
         image: null,
         name: 'Heaven & Earth Jasmine Green Tea 500ml',
-        unitQuantity: 500,
-        unitType: 'ml',
+        unitQuantity: 0.5,
+        unitType: 'L'
     },
     {
         id: 'beverage3',
@@ -304,8 +304,8 @@ const sampleItems = [
         country: 'USA',
         image: 'https://paloma-eshop.com/coca-cola-classicoriginal-320ml',
         name: 'Coca-Cola Classic Can 320ml',
-        unitQuantity: 320,
-        unitType: 'mL'
+        unitQuantity: 0.32,
+        unitType: 'L'
     },
     {
         id: 'beverage4',
@@ -315,8 +315,8 @@ const sampleItems = [
         country: 'USA',
         image: 'https://oakandbarrel.com.sg/products/sprite-cans',
         name: 'Sprite Can 320ml',
-        unitQuantity: 320,
-        unitType: 'mL'
+        unitQuantity: 0.32,
+        unitType: 'L'
     },
     {
         id: 'beverage5',
@@ -370,8 +370,8 @@ const sampleItems = [
         country: 'UK',
         image: 'https://www.bmstores.co.uk/products/dettol-antiseptic-disinfectant-liquid-750ml-352131',
         name: 'Dettol Antiseptic Liquid 750ml',
-        unitQuantity: 750,
-        unitType: 'mL'
+        unitQuantity: 0.75,
+        unitType: 'L'
     },
     {
         id: 'clean5',
