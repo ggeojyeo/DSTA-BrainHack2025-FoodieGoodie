@@ -13,10 +13,10 @@ const StoreItemSchema = new mongoose.Schema({
         ref: 'Item',
     },
 
-    quantity: {
+    stock: {
         type: Number,
-        required: [true, "Stock quantity is required"],
-        min: [0, "Stock quantity cannot be negative"]
+        required: [true, "Stock is required"],
+        min: [0, "Stock cannot be negative"]
     },
 
     price: {

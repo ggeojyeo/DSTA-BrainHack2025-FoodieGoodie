@@ -28,7 +28,7 @@ const ItemSchema = new mongoose.Schema({
     brand: {
         type: String,
         required: [true, "Brand is required"],
-        
+
         trim: [true, "Brand must be trimmed"],
     },
 
@@ -51,7 +51,21 @@ const ItemSchema = new mongoose.Schema({
         trim: [true, "Name must be trimmed"],
         minLength: [8, "Name must be at least 8 characters long"],
         maxLength: [100, "Name must be at most 100 characters long"],
-      }
+    },
+
+    unitQuantity: {
+        type: Number,
+        required: [true, "Unit quantity is required"],
+
+        trim: [true, "Unit quantity must be trimmed"],
+    },
+
+    unitType: {
+        type: String,
+        required: [true, "Unit type is required"],
+
+        trim: [true, "Unit type must be trimmed"],
+    },
 
 });
 

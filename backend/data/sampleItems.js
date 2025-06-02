@@ -1,58 +1,69 @@
 const sampleItems = [
     {
-        id: 'egg2',
+        id: 'egg1',
         barcode: '888888880001',
         category: 'eggs',
-        brand: 'Chew\'s',
+        brand: "Chew's",
         country: 'Singapore',
-        image: null,
-        name: 'Chew\'s Fresh Eggs Grade AA 10s'
+        image: 'https://coldstorage.com.sg/medias/101640975.jpg',
+        name: "Chew's Fresh Eggs Grade AA 10s",
+        unitQuantity: 10,
+        unitType: 'pcs',
     },
     {
-        id: 'egg3',
+        id: 'egg2',
         barcode: '888888880002',
         category: 'eggs',
         brand: 'Seng Choon',
         country: 'Singapore',
-        image: null,
-        name: 'Seng Choon Farm Fresh Eggs 10s'
+        image: 'https://coldstorage.com.sg/medias/101658993.jpg',
+        name: 'Seng Choon Farm Fresh Eggs 10s',
+        unitQuantity: 10,
+        unitType: 'pcs',
     },
     {
-        id: 'egg4',
+        id: 'egg3',
         barcode: '888888880003',
         category: 'eggs',
         brand: 'Pasar',
         country: 'Malaysia',
-        image: null,
-        name: 'Pasar Fresh Eggs 10s'
+        image: 'https://www.fairprice.com.sg/medias/13190663.jpg',
+        name: 'Pasar Fresh Eggs 10s',
+        unitQuantity: 10,
+        unitType: 'pcs',
     },
     {
-        id: 'egg5',
+        id: 'egg4',
         barcode: '888888880004',
         category: 'eggs',
         brand: 'Dasoon',
         country: 'Malaysia',
-        image: null,
-        name: 'Dasoon Omega-3 Eggs 10s'
+        image: 'https://www.komalasvegemart.com/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/d/a/dasoon-high-quality-fresh-eggs-10s.jpg',
+        name: 'Dasoon Omega-3 Eggs 10s',
+        unitQuantity: 10,
+        unitType: 'pcs',
     },
     {
-        id: 'egg6',
+        id: 'egg5',
         barcode: '888888880005',
         category: 'eggs',
         brand: 'Kampong',
         country: 'Singapore',
-        image: null,
-        name: 'Kampong Free Range Eggs 10s'
+        image: 'https://kiasumart.com/wp-content/uploads/2021/04/Kampong-Fresh-Eggs-10s.jpg',
+        name: 'Kampong Free Range Eggs 10s',
+        unitQuantity: 10,
+        unitType: 'pcs',
     },
-
     {
         id: 'milk1',
         barcode: '4902430651469',
         category: 'dairy',
         brand: 'Meiji',
         country: 'Singapore',
-        image: null,
-        name: 'Meiji Fresh Milk 2L'
+        image: 'https://www.vshop.sg/wp-content/uploads/2019/11/Meiji-Fresh-Milk-2L.jpg',
+        name: 'Meiji Fresh Milk 2L',
+        unitQuantity: 2,
+        unitType: 'L',
     },
     {
         id: 'milk2',
@@ -60,8 +71,10 @@ const sampleItems = [
         category: 'dairy',
         brand: 'Magnolia',
         country: 'Singapore',
-        image: null,
-        name: 'Magnolia Fresh Milk 2L'
+        image: 'https://shop.villamarket.com/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/m/a/magnolia-fresh-milk-2l.jpg',
+        name: 'Magnolia Fresh Milk 2L',
+        unitQuantity: 2,
+        unitType: 'L',
     },
     {
         id: 'milk3',
@@ -69,17 +82,21 @@ const sampleItems = [
         category: 'dairy',
         brand: 'Farmhouse',
         country: 'Singapore',
-        image: null,
-        name: 'Farmhouse Fresh Milk 2L'
+        image: 'https://coldstorage.com.sg/medias/101643584.jpg',
+        name: 'Farmhouse Fresh Milk 2L',
+        unitQuantity: 2,
+        unitType: 'L',
     },
     {
         id: 'milk4',
         barcode: '888888880008',
         category: 'dairy',
-        brand: 'Paul\'s',
+        brand: "Paul's",
         country: 'Australia',
         image: null,
-        name: 'Paul\'s Fresh Milk 2L'
+        name: "Paul's Fresh Milk 2L",
+        unitQuantity: 2,
+        unitType: 'L',
     },
     {
         id: 'milk5',
@@ -88,9 +105,10 @@ const sampleItems = [
         brand: 'Cowhead',
         country: 'Australia',
         image: null,
-        name: 'Cowhead Fresh Milk 2L'
+        name: 'Cowhead Fresh Milk 2L',
+        unitQuantity: 2,
+        unitType: 'L',
     },
-
     {
         id: 'bread1',
         barcode: '8888145004563',
@@ -98,7 +116,9 @@ const sampleItems = [
         brand: 'Gardenia',
         country: 'Singapore',
         image: null,
-        name: 'Gardenia White Bread 600g'
+        name: 'Gardenia White Bread 600g',
+        unitQuantity: 600,
+        unitType: 'g',
     },
     {
         id: 'bread2',
@@ -107,7 +127,9 @@ const sampleItems = [
         brand: 'Sunshine',
         country: 'Singapore',
         image: null,
-        name: 'Sunshine Soft White Bread 600g'
+        name: 'Sunshine Soft White Bread 600g',
+        unitQuantity: 600,
+        unitType: 'g',
     },
     {
         id: 'bread3',
@@ -116,7 +138,9 @@ const sampleItems = [
         brand: 'Holsum',
         country: 'Singapore',
         image: null,
-        name: 'Holsum Soft White Bread 600g'
+        name: 'Holsum Soft White Bread 600g',
+        unitQuantity: 600,
+        unitType: 'g',
     },
     {
         id: 'bread4',
@@ -125,7 +149,9 @@ const sampleItems = [
         brand: 'Mission',
         country: 'Malaysia',
         image: null,
-        name: 'Mission Wraps Original 8s'
+        name: 'Mission Wraps Original 8s',
+        unitQuantity: 8,
+        unitType: 'pcs',
     },
     {
         id: 'bread5',
@@ -134,9 +160,10 @@ const sampleItems = [
         brand: 'Gardenia',
         country: 'Singapore',
         image: null,
-        name: 'Gardenia Wholemeal Bread 600g'
+        name: 'Gardenia Wholemeal Bread 600g',
+        unitQuantity: 600,
+        unitType: 'g',
     },
-
     {
         id: 'rice1',
         barcode: '8885008021047',
@@ -144,7 +171,9 @@ const sampleItems = [
         brand: 'Golden Phoenix',
         country: 'Thailand',
         image: null,
-        name: 'Golden Phoenix Thai Fragrant Rice 5kg'
+        name: 'Golden Phoenix Thai Fragrant Rice 5kg',
+        unitQuantity: 5,
+        unitType: 'kg',
     },
     {
         id: 'rice2',
@@ -153,7 +182,9 @@ const sampleItems = [
         brand: 'Royal Umbrella',
         country: 'Thailand',
         image: null,
-        name: 'Royal Umbrella Thai Hom Mali Rice 5kg'
+        name: 'Royal Umbrella Thai Hom Mali Rice 5kg',
+        unitQuantity: 5,
+        unitType: 'kg',
     },
     {
         id: 'rice3',
@@ -162,7 +193,9 @@ const sampleItems = [
         brand: 'Sakura',
         country: 'Thailand',
         image: null,
-        name: 'Sakura Jasmine Rice 5kg'
+        name: 'Sakura Jasmine Rice 5kg',
+        unitQuantity: 5,
+        unitType: 'kg',
     },
     {
         id: 'rice4',
@@ -171,7 +204,9 @@ const sampleItems = [
         brand: 'SongHe',
         country: 'Vietnam',
         image: null,
-        name: 'SongHe AAA Thai Fragrant Rice 5kg'
+        name: 'SongHe AAA Thai Fragrant Rice 5kg',
+        unitQuantity: 5,
+        unitType: 'kg',
     },
     {
         id: 'rice5',
@@ -180,9 +215,10 @@ const sampleItems = [
         brand: 'Simei',
         country: 'Thailand',
         image: null,
-        name: 'Simei Thai Fragrant Rice 5kg'
+        name: 'Simei Thai Fragrant Rice 5kg',
+        unitQuantity: 5,
+        unitType: 'kg',
     },
-
     {
         id: 'snack1',
         barcode: '9556103003143',
@@ -190,7 +226,9 @@ const sampleItems = [
         brand: 'Jack n Jill',
         country: 'Malaysia',
         image: null,
-        name: 'Jack n Jill Potato Chips Original 60g'
+        name: 'Jack n Jill Potato Chips Original 60g',
+        unitQuantity: 60,
+        unitType: 'g',
     },
     {
         id: 'snack2',
@@ -199,7 +237,9 @@ const sampleItems = [
         brand: 'Pringles',
         country: 'USA',
         image: null,
-        name: 'Pringles Sour Cream 110g'
+        name: 'Pringles Sour Cream 110g',
+        unitQuantity: 110,
+        unitType: 'g',
     },
     {
         id: 'snack3',
@@ -208,16 +248,20 @@ const sampleItems = [
         brand: 'Calbee',
         country: 'Japan',
         image: null,
-        name: 'Calbee Hot & Spicy Potato Chips 80g'
+        name: 'Calbee Hot & Spicy Potato Chips 80g',
+        unitQuantity: 80,
+        unitType: 'g',
     },
     {
         id: 'snack4',
         barcode: '888888880020',
         category: 'snacks',
-        brand: 'Lay\'s',
+        brand: "Lay's",
         country: 'USA',
         image: null,
-        name: 'Lay\'s Classic Potato Chips 170g'
+        name: "Lay's Classic Potato Chips 170g",
+        unitQuantity: 170,
+        unitType: 'g',
     },
     {
         id: 'snack5',
@@ -226,9 +270,10 @@ const sampleItems = [
         brand: 'Ritz',
         country: 'USA',
         image: null,
-        name: 'Ritz Cheese Crackers 190g'
+        name: 'Ritz Cheese Crackers 190g',
+        unitQuantity: 190,
+        unitType: 'g',
     },
-
     {
         id: 'beverage1',
         barcode: '9556169931786',
@@ -236,7 +281,9 @@ const sampleItems = [
         brand: 'Pokka',
         country: 'Singapore',
         image: null,
-        name: 'Pokka Green Tea No Sugar 500ml'
+        name: 'Pokka Green Tea No Sugar 500ml',
+        unitQuantity: 500,
+        unitType: 'ml',
     },
     {
         id: 'beverage2',
@@ -245,7 +292,9 @@ const sampleItems = [
         brand: 'Heaven & Earth',
         country: 'Singapore',
         image: null,
-        name: 'Heaven & Earth Jasmine Green Tea 500ml'
+        name: 'Heaven & Earth Jasmine Green Tea 500ml',
+        unitQuantity: 500,
+        unitType: 'ml',
     },
     {
         id: 'beverage3',
@@ -253,8 +302,10 @@ const sampleItems = [
         category: 'beverages',
         brand: 'Coca-Cola',
         country: 'USA',
-        image: null,
-        name: 'Coca-Cola Classic Can 320ml'
+        image: 'https://paloma-eshop.com/coca-cola-classicoriginal-320ml',
+        name: 'Coca-Cola Classic Can 320ml',
+        unitQuantity: 320,
+        unitType: 'mL'
     },
     {
         id: 'beverage4',
@@ -262,8 +313,10 @@ const sampleItems = [
         category: 'beverages',
         brand: 'Sprite',
         country: 'USA',
-        image: null,
-        name: 'Sprite Can 320ml'
+        image: 'https://oakandbarrel.com.sg/products/sprite-cans',
+        name: 'Sprite Can 320ml',
+        unitQuantity: 320,
+        unitType: 'mL'
     },
     {
         id: 'beverage5',
@@ -271,18 +324,21 @@ const sampleItems = [
         category: 'beverages',
         brand: 'F&N',
         country: 'Singapore',
-        image: null,
-        name: 'F&N Orange Crush 1.5L'
+        image: 'https://www.lazada.com.my/products/fn-orange-15l-x-12-i2948710423.html',
+        name: 'F&N Orange Crush 1.5L',
+        unitQuantity: 1.5,
+        unitType: 'L'
     },
-
     {
         id: 'clean1',
         barcode: '8888021200127',
         category: 'cleaning',
         brand: 'TOP',
         country: 'Malaysia',
-        image: null,
-        name: 'TOP Liquid Detergent Super Colour 2.8kg'
+        image: 'https://marketplaces.sg/product/top-liquid-detergent-super-low-suds-colour-protect-2-8kg/',
+        name: 'TOP Liquid Detergent Super Colour 2.8kg',
+        unitQuantity: 2.8,
+        unitType: 'kg'
     },
     {
         id: 'clean2',
@@ -290,8 +346,10 @@ const sampleItems = [
         category: 'cleaning',
         brand: 'Dynamo',
         country: 'Singapore',
-        image: null,
-        name: 'Dynamo Power Gel 2.7kg'
+        image: 'https://shopee.com.my/Dynamo-Power-Gel-Detergent-Bottle-2.7KG-Top-load-Front-Load-Anti-bacterial-Color-Care-Odor-Removal-Downy-Passion-i.146741462.7117074024',
+        name: 'Dynamo Power Gel 2.7kg',
+        unitQuantity: 2.7,
+        unitType: 'kg'
     },
     {
         id: 'clean3',
@@ -299,8 +357,10 @@ const sampleItems = [
         category: 'cleaning',
         brand: 'Magiclean',
         country: 'Japan',
-        image: null,
-        name: 'Magiclean Floor Cleaner 2L'
+        image: 'https://homemartsg.com/product/magiclean-floor-clean-flower-bliss-2l/',
+        name: 'Magiclean Floor Cleaner 2L',
+        unitQuantity: 2,
+        unitType: 'L'
     },
     {
         id: 'clean4',
@@ -308,8 +368,10 @@ const sampleItems = [
         category: 'cleaning',
         brand: 'Dettol',
         country: 'UK',
-        image: null,
-        name: 'Dettol Antiseptic Liquid 750ml'
+        image: 'https://www.bmstores.co.uk/products/dettol-antiseptic-disinfectant-liquid-750ml-352131',
+        name: 'Dettol Antiseptic Liquid 750ml',
+        unitQuantity: 750,
+        unitType: 'mL'
     },
     {
         id: 'clean5',
@@ -317,8 +379,10 @@ const sampleItems = [
         category: 'cleaning',
         brand: 'Walch',
         country: 'Singapore',
-        image: null,
-        name: 'Walch Multi-Purpose Disinfectant 2L'
+        image: 'https://www.watsons.com.hk/en/walch-multi-purpose-disinfectant-2x-2l-630ml/p/BP_417504',
+        name: 'Walch Multi-Purpose Disinfectant 2L',
+        unitQuantity: 2,
+        unitType: 'L'
     }
 ];
 
