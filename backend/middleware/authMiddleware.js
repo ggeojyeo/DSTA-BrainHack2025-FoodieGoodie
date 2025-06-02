@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
 
-// Hardcoded secret for now — later put this in .env
 const JWT_SECRET = process.env.JWT_SECRET;
 
 module.exports = function (req, res, next) {
@@ -11,7 +10,7 @@ module.exports = function (req, res, next) {
         return res.status(401).json({ error: "Missing or invalid token" });
     }
 
-    const token = authHeader.split(" ")[1]; // Get the actual token string
+    const token = authHeader.split(" ")[1]; // Get the actual token string, not 'Bearer'
 
     try {
         // Step 2: Verify token using the secret key
