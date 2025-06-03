@@ -20,11 +20,12 @@ async function findNearbyStores(latitude, longitude) {
 
 // This function finds the directions from the user's location to the nearest grocery store
 // It takes start and end coordinates as parameters and returns the route details
-async function findDirections(startLat, startLng, endLat, endLng) {
+async function findDirections(origin, destination) {
     const apiKey = process.env.GOOGLE_MAPS_API_KEY;
-    const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${startLat},${startLng}&destination=${endLat},${endLng}&key=${apiKey}`;
+    const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}&key=${apiKey}`;
     try {
         const response = await axios.get(url);
+        
         if (response.data.routes && response.data.routes.length > 0) {
             return response.data.routes[0].legs[0];
         } else {
