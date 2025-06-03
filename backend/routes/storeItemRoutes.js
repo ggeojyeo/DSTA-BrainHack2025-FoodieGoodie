@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const { getAllStoreItems, getSpecificStoreItems } = require('../controllers/storeitemController');
+const { getAllStoreItems, getAllSpecificStoreItems, getStoreItemById, getStoreItemByStoreIdName } = require('../controllers/storeitemController');
 
 router.get('/', getAllStoreItems);
-router.get('/specific', getSpecificStoreItems);
+router.get('/individualStore', getAllSpecificStoreItems);
+router.get('/itemId', getStoreItemById);
+router.get('/storeIdName', getStoreItemByStoreIdName);
 
 module.exports = router;
