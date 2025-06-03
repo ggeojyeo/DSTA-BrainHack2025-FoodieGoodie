@@ -1,6 +1,33 @@
 const Store = require('../models/Store');
 const { findNearbyStores, findDirections } = require('../services/mapService');
 
+exports.getAllStores = async (req, res) => {
+    try {
+        const stores = await Store.find();
+        res.json({
+            stores: stores
+        });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+}
+
+exports.getStoreById = async (req, res) => {
+    try {
+        const { specificStoreId } = req.query;
+        const specificStore = await Store.findById(specificStoreId);
+        if (!specificStore) {
+            return res.status(404).json({ error: 'Store not found' });
+        }
+        res.json({
+            store: specificStore
+        });
+    }
+    catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+}
+
 exports.getNearbyStores = async (req, res) => {
     try {
         const { latitude, longitude } = req.query;
