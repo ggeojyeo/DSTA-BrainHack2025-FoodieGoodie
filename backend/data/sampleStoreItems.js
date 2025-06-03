@@ -82,7 +82,7 @@ const sampleStoreItems = [
     { 'storeId': 'ChIJoxkFbaAX2jERCHmMubJAPmY', 'itemId': 'clean3', 'stock': 47, 'price': 17.77 },
     { 'storeId': 'ChIJoxkFbaAX2jERCHmMubJAPmY', 'itemId': 'clean4', 'stock': 47, 'price': 7.52 },
     { 'storeId': 'ChIJoxkFbaAX2jERCHmMubJAPmY', 'itemId': 'rice3', 'stock': 88, 'price': 11.71 },
-    
+
     { 'storeId': 'ChIJVciCsj4W2jERf3sd4nBPkrM', 'itemId': 'egg5', 'stock': 68, 'price': 13.02 },
     { 'storeId': 'ChIJVciCsj4W2jERf3sd4nBPkrM', 'itemId': 'beverage3', 'stock': 35, 'price': 17.75 },
     { 'storeId': 'ChIJVciCsj4W2jERf3sd4nBPkrM', 'itemId': 'egg4', 'stock': 60, 'price': 19.37 },
@@ -123,7 +123,7 @@ const sampleStoreItems = [
     { 'storeId': 'ChIJJ4D-iA0W2jERxr52iT2fQjw', 'itemId': 'clean2', 'stock': 56, 'price': 16.8 },
     { 'storeId': 'ChIJJ4D-iA0W2jERxr52iT2fQjw', 'itemId': 'bread5', 'stock': 78, 'price': 12.03 },
     { 'storeId': 'ChIJJ4D-iA0W2jERxr52iT2fQjw', 'itemId': 'clean5', 'stock': 27, 'price': 4.93 },
-    
+
     { 'storeId': 'ChIJ4UlPpCQW2jERu2MjnxRPlTU', 'itemId': 'clean5', 'stock': 17, 'price': 3.97 },
     { 'storeId': 'ChIJ4UlPpCQW2jERu2MjnxRPlTU', 'itemId': 'clean4', 'stock': 48, 'price': 5.79 },
     { 'storeId': 'ChIJ4UlPpCQW2jERu2MjnxRPlTU', 'itemId': 'rice1', 'stock': 67, 'price': 5.58 },

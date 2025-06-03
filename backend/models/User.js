@@ -49,7 +49,7 @@ const UserSchema = new mongoose.Schema({
 
     notification: {
         type: Boolean,
-        
+
         default: true,
     },
 });

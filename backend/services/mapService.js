@@ -25,7 +25,7 @@ async function findDirections(origin, destination) {
     const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}&key=${apiKey}`;
     try {
         const response = await axios.get(url);
-        
+
         if (response.data.routes && response.data.routes.length > 0) {
             return response.data.routes[0].legs[0];
         } else {
