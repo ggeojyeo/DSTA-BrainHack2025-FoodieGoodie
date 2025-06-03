@@ -1,9 +1,12 @@
-const StoreItem = require('../models/StoreItem');
+const StoreItemService = require('../services/storeItemService');
 const ItemService = require('../services/itemService');
 
 exports.getAllStoreItems = async (req, res) => {
     try {
-        const allStoreItems = await StoreItem.find();
+        const allStoreItems = await StoreItemService.getAllStoreItems();
+        if (!allStoreItems || allStoreItems.length === 0) {
+            return res.status(404).json({ error: 'No store items found' });
+        }
         res.json(allStoreItems);
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -14,9 +17,9 @@ exports.getAllSpecificStoreItems = async (req, res) => {
     try {
         const { specificStoreId } = req.query;
 
-        const storeitems = await StoreItem.find({ storeId: specificStoreId });
-        if (!storeitems) {
-            return res.status(404).json({ error: 'Store items not found' });
+        const storeitems = await StoreItemService.getAllSpecificStoreItems(specificStoreId);
+        if (!storeitems || storeitems.length === 0) {
+            return res.status(404).json({ error: 'No store items found for the specified store' });
         }
         res.json(storeitems);
     } catch (err) {
@@ -24,11 +27,11 @@ exports.getAllSpecificStoreItems = async (req, res) => {
     }
 }
 
-exports.getStoreItemById = async (req, res) => {
+exports.getStoreItemByItemId = async (req, res) => {
     try {
         const { itemId } = req.query;
 
-        const storeItem = await StoreItem.findById(itemId);
+        const storeItem = await StoreItemService.getStoreItemById(itemId);
         if (!storeItem) {
             return res.status(404).json({ error: 'Store item not found' });
         }
@@ -38,16 +41,16 @@ exports.getStoreItemById = async (req, res) => {
     }
 }
 
-exports.getStoreItemByStoreIdName = async (req, res) => {
+exports.getStoreItemByStoreIdItemId = async (req, res) => {
     try {
         const { specificStoreId, itemName } = req.query;
 
         const specificItem = await ItemService.getItemByName(itemName);
         const specificItemId = specificItem._id;
 
-        const storeItem = await StoreItem.findOne({ storeId: specificStoreId, itemId: specificItemId });
+        const storeItem = await StoreItemService.getStoreItemByStoreIdItemId(specificStoreId, specificItemId);
         if (!storeItem) {
-            return res.status(404).json({ error: 'Store item not found' });
+            return res.status(404).json({ error: 'Store item not found for the specified store and item name' });
         }
         res.json(storeItem);
     }
