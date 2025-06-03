@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 const JWT_SECRET = process.env.JWT_SECRET;
 
 exports.createUser = async (req, res) => {
-    console.log("Received request:", req.body);
     try {
         const user = await User.create(req.body);
         res.status(201).json(user);
