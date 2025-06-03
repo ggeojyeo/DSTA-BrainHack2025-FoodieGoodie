@@ -20,10 +20,14 @@ app.use('/api/users', userRoutes);
 const homeQuesRoutes = require('./routes/homeQuesRoutes');
 app.use('/api/home-ques', homeQuesRoutes);
 
-
 // Supply Questionnaire Routes
 const supplyQuesRoutes = require('./routes/supplyQuesRoutes');
 app.use('/api/supply-ques', supplyQuesRoutes);
+
+// Calculate Supply Score Routes
+const scoreRoutes = require('./routes/scoreRoutes');
+app.use('/api/score', scoreRoutes);
+
 
 
 const PORT = process.env.PORT || 4000; //5000 doesnt work on postman idk why
