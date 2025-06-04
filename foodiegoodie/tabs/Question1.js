@@ -42,7 +42,7 @@ export default function Question1() {
       <View style={styles.progressBar}>
         <View style={styles.progressFill} />
       </View>
-      <Text style={styles.step}>Step 1 of 3</Text>
+      <Text style={styles.step}>Step 1 of 2</Text>
       <Text style={styles.title}>How many people live in your household?</Text>
 
       <CounterCard
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   progressFill: {
-    width: "33%",
+    width: "50%",
     height: "100%",
     backgroundColor: colours.lightPurple,
   },

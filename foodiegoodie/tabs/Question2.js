@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import { colours } from "../utils/colours";
 
-export default function Question2() {
-  const [dietary, setDietary] = useState("");
-  const [medication, setMedication] = useState("");
-  const navigation = useNavigation();
+export default function Question3() {
+  const [rice, setRice] = useState("");
+  const [canned, setCanned] = useState("");
+  const [instant, setInstant] = useState("");
 
   return (
     <View style={styles.container}>
@@ -14,27 +13,30 @@ export default function Question2() {
       <View style={styles.progressBar}>
         <View style={styles.progressFill} />
       </View>
-      <Text style={styles.step}>Step 2 of 3</Text>
-      <Text style={styles.title}>Tell us more about you</Text>
+      <Text style={styles.step}>Step 2 of 2</Text>
+      <Text style={styles.title}>Current Supply List</Text>
 
-      <TextInput
-        placeholder="Any dietary restrictions?"
-        style={styles.input}
-        value={dietary}
-        onChangeText={setDietary}
-      />
-      <TextInput
-        placeholder="Any important medication info?"
-        style={styles.input}
-        value={medication}
-        onChangeText={setMedication}
-      />
+      <View style={styles.inputGroup}>
+        <Text>Rice/Noodles (kg)</Text>
+        <TextInput style={styles.input} keyboardType="numeric" value={rice} onChangeText={setRice} />
+      </View>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate("Question3")}
-      >
-        <Text style={styles.buttonText}>Continue</Text>
+      <View style={styles.inputGroup}>
+        <Text>Canned Food (units)</Text>
+        <TextInput style={styles.input} keyboardType="numeric" value={canned} onChangeText={setCanned} />
+      </View>
+
+      <View style={styles.inputGroup}>
+        <Text>Instant Food (units)</Text>
+        <TextInput style={styles.input} keyboardType="numeric" value={instant} onChangeText={setInstant} />
+      </View>
+
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>Done</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={{ marginTop: 10 }}>
+        <Text style={{ color: "#999", textAlign: "center" }}>Skip This Step</Text>
       </TouchableOpacity>
     </View>
   );
@@ -42,8 +44,8 @@ export default function Question2() {
 
 const styles = StyleSheet.create({
   container: { 
-    flex: 1,
-    padding: 20,
+    flex: 1, 
+    padding: 20, 
     paddingTop: 60,
     backgroundColor: "#fff"
   },
@@ -61,7 +63,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   progressFill: {
-    width: "66%", 
+    width: "100%", 
     height: "100%",
     backgroundColor: colours.lightPurple,
   },
@@ -77,11 +79,13 @@ const styles = StyleSheet.create({
     marginBottom: 20, 
     textAlign: "center" 
   },
+  inputGroup: { 
+    marginBottom: 20 
+  },
   input: { 
     borderWidth: 1, 
     borderColor: "#ccc", 
     padding: 12, 
-    marginBottom: 20, 
     borderRadius: 10 
   },
   button: { 
