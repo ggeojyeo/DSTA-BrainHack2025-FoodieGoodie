@@ -24,6 +24,12 @@ const StoreItemSchema = new mongoose.Schema({
         required: [true, "Price is required"],
         min: [0, "Price cannot be negative"]
     },
+    
+    threshold: {
+        type: Number,
+        required: [true, "Threshold is required"],
+        min: [0, "Threshold cannot be negative"]
+    },
 });
 
 StoreItemSchema.index({ storeId: 1, itemId: 1 }, { unique: true });
