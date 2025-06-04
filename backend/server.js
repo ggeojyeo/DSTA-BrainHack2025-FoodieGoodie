@@ -26,7 +26,7 @@ app.use('/api/supply-ques', supplyQuesRoutes);
 
 // Calculate Supply Score Routes
 const scoreRoutes = require('./routes/scoreRoutes');
-app.use('/api/score', scoreRoutes);
+app.use('/api/supply-score', scoreRoutes);
 
 
 
