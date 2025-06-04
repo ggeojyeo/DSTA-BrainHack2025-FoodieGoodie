@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { colours } from "../utils/colours";
 
-export default function Question3() {
+export default function Question2() {
   const [rice, setRice] = useState("");
   const [canned, setCanned] = useState("");
   const [instant, setInstant] = useState("");
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -31,7 +33,7 @@ export default function Question3() {
         <TextInput style={styles.input} keyboardType="numeric" value={instant} onChangeText={setInstant} />
       </View>
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress = {() => navigation.navigate('Community')}>
         <Text style={styles.buttonText}>Done</Text>
       </TouchableOpacity>
 
