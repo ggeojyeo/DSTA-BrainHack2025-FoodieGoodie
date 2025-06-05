@@ -5,22 +5,42 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 export default function BottomNavBar() {
   const navigation = useNavigation();
   const route = useRoute();
+  const currentScreen = route.name;
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.tab} onPress={() => navigation.navigate("HomeScreen")}>
-        if(name=="HomeScreen") {require("../assets/homeIcon.png")}else // havent finish this part yet
+      <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        <TouchableOpacity style={currentScreen === "HomeScreen" ? styles.tabClicked : styles.tabNormal} onPress={() => navigation.navigate("HomeScreen")}>
+          <Image
+            source={
+              currentScreen === "HomeScreen" ? require("../assets/whiteHomeIcon.png") : require("../assets/purpleHomeIcon.png")
+            }
+            style={styles.icon}
+          />
+        </TouchableOpacity>
         <Text style={styles.label}>Home</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.tab} onPress={() => navigation.navigate("Community")}>
-        <Image source={require("../assets/communityIcon.png")} style={styles.icon} />
+      </View>
+      <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        <TouchableOpacity style={currentScreen === "CommunityScreen" ? styles.tabClicked : styles.tabNormal} onPress={() => navigation.navigate("CommunityScreen")}>
+          <Image
+            source={
+              currentScreen === "CommunityScreen" ? require("../assets/whiteCommunityIcon.png") : require("../assets/purpleCommunityIcon.png")
+            }
+            style={styles.icon}
+          />
+        </TouchableOpacity>
         <Text style={styles.label}>Community</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.tab} onPress={() => navigation.navigate("Profile")}>
-        <Image source={require("../assets/bottomprofileIcon.png")} style={styles.icon} />
+      </View>
+      <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        <TouchableOpacity style={currentScreen === "ProfileScreen" ? styles.tabClicked : styles.tabNormal} onPress={() => navigation.navigate("ProfileScreen")}>
+          <Image
+            source={
+              currentScreen === "ProfileScreen" ? require("../assets/whiteProfileIcon.png") : require("../assets/purpleProfileIcon.png")
+            }
+            style={styles.icon}
+          />
+        </TouchableOpacity>
         <Text style={styles.label}>Profile</Text>
-      </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -40,8 +60,16 @@ const styles = StyleSheet.create({
     right: 0,
     zIndex: 999,
   },
-  tab: {
+  tabNormal: {
     alignItems: "center",
+  },
+  tabClicked: {
+    alignItems: "center",
+    justifyContent: 'center',
+    backgroundColor: '#583CFF',
+    paddingVertical: 2,
+    borderRadius: 20,
+    paddingHorizontal: 16,
   },
   icon: {
     width: 24,
@@ -50,6 +78,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 12,
-    color: "#333",
+    color: "#24167A",
+    alignContent: 'center'
   },
 });

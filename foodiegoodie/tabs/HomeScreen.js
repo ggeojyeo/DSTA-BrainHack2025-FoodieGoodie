@@ -5,6 +5,7 @@ import * as Location from "expo-location";
 import { useNavigation } from "@react-navigation/native";
 import BottomNavBar from "../components/BottomNavBar";
 import { colours } from "../utils/colours";
+import TopNavBar from "../components/HomeNavBar";
 
 export default function HomeScreen() {
   const navigation = useNavigation();
@@ -48,18 +49,10 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <ScrollView contentContainerStyle={{paddingBottom: 80}}>
         {/* Floating Top Nav */}
-        <View style={styles.topNav}>
-          <TouchableOpacity onPress={() => navigation.navigate("Settings")}>            
-            <Image source={require("../assets/settingsIcon.png")} style={styles.icon} />
-          </TouchableOpacity>
-          <Text style={styles.title}>Home</Text>
-          <TouchableOpacity onPress={() => navigation.navigate("Profile")}>            
-            <Image source={require("../assets/profileIcon.png")} style={styles.icon} />
-          </TouchableOpacity>
-        </View>
+        <TopNavBar/>
 
         {/* Current Location Section */}
-        <Text style={styles.sectionHeader}>Current Location</Text>
+        <Text style={[styles.sectionHeader, {marginBottom: 10}]}>Current Location</Text>
         <View style={styles.cardMap}>
           {location && (
             <MapView
@@ -85,12 +78,12 @@ export default function HomeScreen() {
           </Text>
           <TouchableOpacity style={styles.directionsBtn}>
             <Image source={require("../assets/purpleDirectionIcon.png")} style={styles.directionsIcon} />
-            <Text style={{ color: "#4B0082" }}>Directions</Text>
+            <Text style={{ color: "#583CFF" }}>Directions</Text>
           </TouchableOpacity>
         </View>
 
         {/* Nearby Stores */}
-        <Text style={styles.sectionHeader}>Nearby Stores</Text>
+        <Text style={[styles.sectionHeader, {marginVertical: 12,}]}>Nearby Stores</Text>
         <View style={styles.searchContainer}>
           <TextInput
             placeholder="Search for Store..."
@@ -110,7 +103,7 @@ export default function HomeScreen() {
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
               <View style={styles.storeCard}>
-                <View style={{width: 275, height: 150, transform: [{translateX:-11}, {translateY:-11}],borderTopLeftRadius: 8, borderTopRightRadius: 8, overflow: 'hidden'}}>
+                <View style={{width: 275, height: 150, transform: [{translateX:-12}, {translateY:-12}],borderTopLeftRadius: 8, borderTopRightRadius: 8, overflow: 'hidden'}}>
                   <Image source={item.image} style={styles.storeImage} />
                 </View>
                 <Text style={styles.storeName}>{item.name}</Text>
@@ -140,21 +133,11 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#fff" },
-  topNav: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: 16,
-    color: colours.background,
-  },
-  icon: { width: 24, height: 24 },
-  title: { fontSize: 20, fontWeight: "bold" },
   sectionHeader: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "bold",
     color: "#4B0082",
     marginLeft: 16,
-    marginVertical: 12,
   },
   cardMap: {
     height: 180,
