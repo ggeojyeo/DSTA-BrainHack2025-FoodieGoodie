@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from "react-native";
 import { colours } from "../utils/colours";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Question3() {
+  const navigation = useNavigation();
   const [rice, setRice] = useState("");
   const [canned, setCanned] = useState("");
   const [instant, setInstant] = useState("");
@@ -31,9 +33,12 @@ export default function Question3() {
         <TextInput style={styles.input} keyboardType="numeric" value={instant} onChangeText={setInstant} />
       </View>
 
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Done</Text>
-      </TouchableOpacity>
+      <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.navigate("HomeScreen")}
+            >
+              <Text style={styles.buttonText}>Done</Text>
+            </TouchableOpacity>
 
       <TouchableOpacity style={{ marginTop: 10 }}>
         <Text style={{ color: "#999", textAlign: "center" }}>Skip This Step</Text>
