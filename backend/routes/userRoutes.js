@@ -1,4 +1,3 @@
-// routes/userRoutes.js
 const express = require('express');
 const router = express.Router();
 const { createUser, getUsers, loginUser, deleteAccount, updateUsername, updatePassword, updateMobile, updateEmail, updateAddress} = require('../controllers/userController');

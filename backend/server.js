@@ -1,6 +1,6 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
+const mongoose = require('mongoose');
 require('dotenv').config();
 
 const app = express();
@@ -14,7 +14,16 @@ mongoose.connect(process.env.MONGO_URI)
 
 // User Routes
 const userRoutes = require('./routes/userRoutes');
+const storeRoutes = require('./routes/storeRoutes');
+const itemRoutes = require('./routes/itemRoutes');
+const storeItemRoutes = require('./routes/storeitemRoutes');
+const openRouterRoutes = require('./routes/openrouterRoutes');
+
 app.use('/api/users', userRoutes);
+app.use('/api/stores', storeRoutes);
+app.use('/api/items', itemRoutes);
+app.use('/api/storeitems', storeItemRoutes);
+app.use('/api/openrouter', openRouterRoutes);
 
 // Home Questionnaire Routes
 const homeQuesRoutes = require('./routes/homeQuesRoutes');
