@@ -1,6 +1,6 @@
 // controllers/donationController.js
 const DonationItem = require("../models/DonationItem");
-const ScheduledDonation = require('../models/ScheduledDonation');
+const ScheduledDonations = require('../models/ScheduledDonations');
 
 // GET all items (optionally filter urgent/suggested)
 exports.getDonationItems = async (req, res) => {
@@ -37,7 +37,7 @@ exports.scheduleDonation = async (req, res) => {
         return res.status(400).json({ error: "Please confirm expiry of goods." });
       }
   
-      const donation = await ScheduledDonation.create({
+      const donation = await ScheduledDonations.create({
         itemId, quantity, pickupDate, pickupTime, location, confirmedExpiryBuffer
       });
   

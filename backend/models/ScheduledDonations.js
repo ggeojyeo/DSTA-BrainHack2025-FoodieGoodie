@@ -16,4 +16,4 @@ const scheduledDonationSchema = new mongoose.Schema({
   userDeviceToken: { type: String } 
 });
 
-module.exports = mongoose.model("ScheduledDonation", scheduledDonationSchema);
+module.exports = mongoose.model("ScheduledDonations", scheduledDonationSchema);

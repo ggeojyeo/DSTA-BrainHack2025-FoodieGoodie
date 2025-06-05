@@ -1,5 +1,5 @@
 const cron = require("node-cron");
-const ScheduledDonation = require("../models/ScheduledDonation");
+const ScheduledDonations = require("../models/ScheduledDonations");
 const sendPushNotification = require("../utils/sendPush");
 
 cron.schedule("0 8 * * *", async () => {
@@ -10,7 +10,7 @@ cron.schedule("0 8 * * *", async () => {
   const endOfDay = new Date(today.setHours(23, 59, 59, 999));
 
   try {
-    const donations = await ScheduledDonation.find({
+    const donations = await ScheduledDonations.find({
       pickupDate: { $gte: startOfDay, $lte: endOfDay }
     });
 
