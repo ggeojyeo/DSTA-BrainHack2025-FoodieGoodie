@@ -2,9 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
+require("./jobs/notificationScheduler");
 
 const app = express();
 app.use(cors());
+// Middleware
 app.use(express.json());
 
 // Connect MongoDB
@@ -38,6 +40,9 @@ const scoreRoutes = require('./routes/scoreRoutes');
 app.use('/api/supply-score', scoreRoutes);
 
 
+
+const donationRoutes = require('./routes/donationRoutes'); 
+app.use('/api', donationRoutes); 
 
 const PORT = process.env.PORT || 4000; //5000 doesnt work on postman idk why
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
