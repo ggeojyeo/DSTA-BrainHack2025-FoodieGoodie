@@ -13,6 +13,20 @@ const getItemByName = async (itemName) => {
     }
 }
 
+const getItemsByCategory = async (category) => {
+    try {
+        const items = await Item.find({ category: { $regex: category, $options: 'i' } });
+        if (!items || items.length === 0) {
+            throw new Error('No items found in this category');
+        }
+        return items;
+    }
+    catch (error) {
+        throw new Error(`Error fetching items by category: ${error.message}`);
+    }
+}
+
 module.exports = {
-    getItemByName
+    getItemByName,
+    getItemsByCategory,
 };

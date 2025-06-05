@@ -17,10 +17,13 @@ const userRoutes = require('./routes/userRoutes');
 const storeRoutes = require('./routes/storeRoutes');
 const itemRoutes = require('./routes/itemRoutes');
 const storeItemRoutes = require('./routes/storeitemRoutes');
+const openRouterRoutes = require('./routes/openrouterRoutes');
+
 app.use('/api/users', userRoutes);
 app.use('/api/stores', storeRoutes);
 app.use('/api/items', itemRoutes);
 app.use('/api/storeitems', storeItemRoutes);
+app.use('/api/openrouter', openRouterRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
