@@ -8,7 +8,7 @@ export default function BottomNavBar() {
   const currentScreen = route.name;
   return (
     <View style={styles.container}>
-      <View style={{justifyContent: 'center', alignItems: 'center'}}>
+      <View style={{justifyContent: 'center', alignItems: 'center',}}>
         <TouchableOpacity style={currentScreen === "HomeScreen" ? styles.tabClicked : styles.tabNormal} onPress={() => navigation.navigate("HomeScreen")}>
           <Image
             source={
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
   tabClicked: {
     alignItems: "center",
-    justifyContent: 'center',
+    // justifyContent: 'center',
     backgroundColor: '#583CFF',
     paddingVertical: 2,
     borderRadius: 20,
