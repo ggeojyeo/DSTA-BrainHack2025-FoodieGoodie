@@ -4,7 +4,7 @@ const HomeQues = require('../models/HomeQues');
 const SupplyQues = require('../models/SupplyQues');
 const { getRecommendedSupply, calculateSupplyScore } = require('../utils/calculateSupplyScore');
 
-// GET /api/supply/score?username=maegan_123
+// GET /api/supply-score?username=
 exports.getSupplyScore = async (req, res) => {
     try {
         const { username } = req.query;

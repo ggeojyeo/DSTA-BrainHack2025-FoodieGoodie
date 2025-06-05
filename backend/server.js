@@ -44,5 +44,5 @@ app.use('/api/supply-score', scoreRoutes);
 const donationRoutes = require('./routes/donationRoutes'); 
 app.use('/api', donationRoutes); 
 
-const PORT = process.env.PORT || 5000; //5000 doesnt work on postman idk why
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
