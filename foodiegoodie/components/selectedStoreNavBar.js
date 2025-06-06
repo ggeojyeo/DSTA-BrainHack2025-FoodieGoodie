@@ -3,15 +3,15 @@ import { View, Text, Image, Pressable, StyleSheet, TouchableOpacity } from 'reac
 import { useNavigation } from '@react-navigation/native';
 import {colours} from '../utils/colours';
 
-export default function TopNavBar() {
+export default function HomeNavBar() {
   const navigation = useNavigation();
 
   return (
     <View style={styles.navContainer}>
-      <TouchableOpacity onPress={() => navigation.navigate("SettingsScreen")}>            
+      <TouchableOpacity onPress={() => navigation.navigate("Settings")}>            
         <Image source={require("../assets/settingsIcon.png")} style={styles.icon} />
       </TouchableOpacity>
-      <Text style={styles.title}>Home</Text>
+      <Text style={styles.title}>Store</Text>
       <TouchableOpacity onPress={() => navigation.navigate("Profile")}>            
         <Image source={require("../assets/profileIcon.png")} style={styles.icon} />
       </TouchableOpacity>

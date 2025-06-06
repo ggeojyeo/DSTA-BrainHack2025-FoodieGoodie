@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, TextInput, FlatList, Image, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TextInput, FlatList, Image, ScrollView, TouchableOpacity, RefreshControl } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
 import { useNavigation } from "@react-navigation/native";
 import BottomNavBar from "../components/BottomNavBar";
 import { colours } from "../utils/colours";
-import TopNavBar from "../components/HomeNavBar";
+import HomeNavBar from "../components/HomeNavBar";
 
 export default function HomeScreen() {
   const navigation = useNavigation();
@@ -13,6 +13,15 @@ export default function HomeScreen() {
   const [search, setSearch] = useState("");
   const [stores, setStores] = useState([]);
   const [closestStore, setClosestStore] = useState(null);
+
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  }, []);
 
   useEffect(() => {
     (async () => {
@@ -47,10 +56,12 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={{paddingBottom: 80}}>
+      <ScrollView 
+        contentContainerStyle={{paddingBottom: 80}} 
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} progressViewOffset={70}/>
+      }>
         {/* Floating Top Nav */}
-        <TopNavBar/>
-
+        <HomeNavBar/>
         {/* Current Location Section */}
         <Text style={[styles.sectionHeader, {marginBottom: 10}]}>Current Location</Text>
         <View style={styles.cardMap}>

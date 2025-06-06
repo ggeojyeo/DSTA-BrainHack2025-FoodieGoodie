@@ -10,6 +10,7 @@ import HomeScreen from './tabs/HomeScreen';
 import { StyleSheet, Text, View } from 'react-native';
 import CommunityScreen from './tabs/CommunityScreen';
 import ProfileScreen from './tabs/ProfileScreen';
+import SettingsScreen from './tabs/SettingsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,7 @@ export default function App() {
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="CommunityScreen" component={CommunityScreen} />
         <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+        <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
