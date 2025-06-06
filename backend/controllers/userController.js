@@ -38,8 +38,9 @@ exports.loginUser = async (req, res) => {
             JWT_SECRET,
             {expiresIn: "12h"}
         );
-
         res.json({token});*/
+
+        return res.json({message:"Login successful"})
     } catch (err) {
         res.status(500).json({error: "Server error"})
     }
