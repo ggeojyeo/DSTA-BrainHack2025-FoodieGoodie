@@ -5,6 +5,8 @@ import { colours } from "../utils/colours";
 
 export default function LoginScreen() {
     const navigation = useNavigation();
+    const API_URL = process.env.EXPO_PUBLIC_API_URL;
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -15,8 +17,7 @@ export default function LoginScreen() {
         }
 
         try {
-            // Change localhost to your server's IP address if testing on a physical device
-            const response = await fetch("http://localhost:5000/api/users/login", {
+            const response = await fetch(`${API_URL}/api/users/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

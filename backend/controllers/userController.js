@@ -50,8 +50,8 @@ exports.loginUser = async (req, res) => {
 // DELETE /api/users/delete-account
 exports.deleteAccount = async (req, res) => {
     try {
-        const { username } = req.body;
-        const deleted = await User.findOneAndDelete({ username });
+        const { email } = req.body;
+        const deleted = await User.findOneAndDelete({ email });
 
         if (!deleted) {
             return res.status(404).json({ message: "User not found." });
@@ -63,26 +63,7 @@ exports.deleteAccount = async (req, res) => {
     }
 };
 
-// PUT /api/users/update-username
-exports.updateUsername = async (req, res) => {
-    try {
-        const { currentUsername, newUsername } = req.body;
 
-        const updated = await User.findOneAndUpdate(
-            { username: currentUsername }, //search criteria
-            { username: newUsername }, //update values
-            { new: true }
-        );
-
-        if (!updated) {
-            return res.status(404).json({ message: "User not found." });
-        }
-
-        res.status(200).json({ message: "Username updated.", user: updated });
-    } catch (error) {
-        res.status(500).json({ message: "Server error." });
-    }
-};
 
 // PUT /api/user/update-password
 exports.updatePassword = async (req, res) => {
