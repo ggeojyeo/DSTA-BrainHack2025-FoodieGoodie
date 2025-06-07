@@ -5,7 +5,10 @@ import SignUpScreen from './tabs/SignUpScreen';
 import LoginScreen from './tabs/LoginScreen';
 import Question1 from './tabs/Question1';
 import Question2 from './tabs/Question2';
-import CommunityScreen from './tabs/CommunityScreen';
+import Community from './tabs/Community';
+import SelectQuantity from './tabs/SelectQuantity';
+import DonationDetails from './tabs/DonationDetails';
+import DonationConfirmation from './tabs/DonationConfirmation';
 import { StyleSheet, Text, View } from 'react-native';
 
 const Stack = createNativeStackNavigator();
@@ -19,7 +22,10 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Question1" component={Question1} />
         <Stack.Screen name="Question2" component={Question2} />
-        <Stack.Screen name="Community" component={CommunityScreen} />
+        <Stack.Screen name="Community" component={Community} />
+        <Stack.Screen name="SelectQuantity" component={SelectQuantity} />
+        <Stack.Screen name="DonationDetails" component={DonationDetails} />
+        <Stack.Screen name="DonationConfirmation" component={DonationConfirmation} />
       </Stack.Navigator>
     </NavigationContainer>
   );
