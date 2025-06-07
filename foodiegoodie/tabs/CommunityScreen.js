@@ -1,0 +1,177 @@
+import React from 'react';
+import { View, Text, TextInput, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { colours } from "../utils/colours";
+
+export default function CommunityScreen() {
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.title}>Make A Donation!</Text>
+        <TextInput style={styles.search} placeholder="I can donate..." />
+      </View>
+
+      <ScrollView contentContainerStyle = {{ paddingBottom: 90}}>
+        {/* Urgent Donations */}
+        <Section title="Urgent Donations" items={[
+          { name: 'Eggs', note: 'Only 4 more needed', image: require('../assets/Food/egg.jpg') },
+          { name: 'Dark Soya Sauce', note: 'Only 3 more needed', image: require('../assets/Food/soyaSauce.webp') },
+          { name: 'Milo', note: 'Only 2 more needed', image: require('../assets/Food/milo.webp') }
+        ]} />
+
+        {/* Donate Again */}
+        <Section title="Donate Again" items={[
+          { name: 'Jasmine Rice', note: 'Only 6 more needed', image: require('../assets/Food/rice.jpeg') },
+          { name: 'Sugar', note: 'Only 3 more needed', image: require('../assets/Food/sugar.jpg') }
+        ]} />
+
+        {/* Suggested */}
+        <Section title="Suggested" items={[
+          { name: 'Oyster Sauce', note: 'Only 11 more needed', image: require('../assets/Food/oysterSauce.webp') },
+          { name: 'Salt', note: 'Only 3 more needed', image: require('../assets/Food/salt.jpg') },
+          { name: 'Flour', note: 'Only 6 more needed', image: require('../assets/Food/flour.jpg') }
+        ]} />
+      </ScrollView>
+
+      {/* Bottom Nav */}
+      <View style={styles.nav}>
+        <TouchableOpacity style={styles.navItem}>
+            <Ionicons name="home-outline" size={24} color={colours.darkPurple} />
+            <Text style={styles.navLabel}>Home</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.navItem}>
+            <View style={styles.activeIconContainer}>
+            <Ionicons name="people-outline" size={24} color="white" />
+            </View>
+            <Text style={styles.navLabelActive}>Community</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.navItem}>
+            <Ionicons name="person-outline" size={24} color={colours.darkPurple} />
+            <Text style={styles.navLabel}>Profile</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+}
+
+const Section = ({ title, items }) => (
+  <View style={styles.section}>
+    <View style={styles.sectionHeader}>
+      <Text style={styles.sectionTitle}>{title}</Text>
+      <Text style={styles.seeAll}>See All</Text>
+    </View>
+    <ScrollView horizontal showsHorizontalScrollIndicator={false} style = {{ paddingLeft:10 }}>
+      {items.map((item, i) => (
+        <View key={i} style={styles.card}>
+          <Image source={item.image} style={styles.image} />
+          <Text style={styles.itemText}>{item.name}</Text>
+          {item.note ? <Text style={styles.note}>{item.note}</Text> : null}
+        </View>
+      ))}
+    </ScrollView>
+  </View>
+);
+
+const styles = StyleSheet.create({
+  container: { 
+    flex: 1, 
+    paddingTop: 70,
+    backgroundColor: colours.background,
+  },
+  header: {
+    padding: 20 
+  },
+  title: { 
+    fontSize: 22, 
+    fontWeight: 'bold' 
+  },
+  search: { 
+    marginTop: 10, 
+    padding: 10, 
+    backgroundColor: '#f0f0f0', 
+    borderRadius: 10 
+  },
+  section: { 
+    marginTop: 10 
+  },
+  sectionHeader: { 
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    paddingHorizontal: 20,
+    marginBottom: 10,
+  },
+  sectionTitle: { 
+    fontSize: 16, 
+    fontWeight: '600' 
+  },
+  seeAll: { 
+    color: 'blue',
+    fontWeight: '500',
+  },
+  card: { 
+    width: 110,
+    backgroundColor: colours.background,
+    borderRadius: 12,
+    marginHorizontal: 10, 
+    alignItems: 'center',
+    padding: 10,
+    shadowColor: '#000',
+    shadowOpactiy: 0.1,
+    shadowOffset: { width:0, height:2 },
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  image: { 
+    width: 80, 
+    height: 80, 
+    borderRadius: 8,
+    resizeMode: 'contain',
+  },
+  itemText: { 
+    fontWeight: '500', 
+    marginTop: 5,
+    textAlign: 'left',
+  },
+  note: { 
+    fontSize: 12, 
+    color: 'gray',
+    textAlign: 'left'
+  },
+  nav: { 
+    flexDirection: 'row', 
+    justifyContent: 'space-around', 
+    paddingVertical: 15, 
+    borderTopWidth: 1, 
+    borderColor: '#eee',
+    backgroundColor: colours.background,
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    height: 75,
+  },
+  navItem: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  navItemActive: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  navLabel: {
+    fontSize: 12,
+    color: colours.darkPurple,
+    marginTop: 4,
+  },
+  navLabelActive: {
+    fontSize: 12,
+    color: colours.darkPurple,
+    marginTop: 4,
+  },
+  activeIconContainer: {
+    backgroundColor: colours.darkPurple,
+    padding: 10,
+    borderRadius: 50,
+  },  
+});
