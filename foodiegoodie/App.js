@@ -5,6 +5,7 @@ import SignUpScreen from './tabs/SignUpScreen';
 import LoginScreen from './tabs/LoginScreen';
 import Question1 from './tabs/Question1';
 import Question2 from './tabs/Question2';
+import InventoryTracking from './tabs/InventoryTracking';
 import Community from './tabs/Community';
 import SelectQuantity from './tabs/SelectQuantity';
 import DonationDetails from './tabs/DonationDetails';
@@ -22,6 +23,7 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Question1" component={Question1} />
         <Stack.Screen name="Question2" component={Question2} />
+        <Stack.Screen name="InventoryTracking" component={InventoryTracking} />
         <Stack.Screen name="Community" component={Community} />
         <Stack.Screen name="SelectQuantity" component={SelectQuantity} />
         <Stack.Screen name="DonationDetails" component={DonationDetails} />

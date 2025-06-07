@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, TextInput, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Ionicons } from '@expo/vector-icons';
 import { colours } from "../utils/colours";
+import BottomNav from '../utils/BottomNav';
 
 export default function Community() {
   const navigation = useNavigation();
@@ -56,24 +56,7 @@ export default function Community() {
       </ScrollView>
 
       {/* Bottom Nav */}
-      <View style={styles.nav}>
-        <TouchableOpacity style={styles.navItem}>
-            <Ionicons name="home-outline" size={24} color={colours.darkPurple} />
-            <Text style={styles.navLabel}>Home</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.navItem}>
-            <View style={styles.activeIconContainer}>
-            <Ionicons name="people-outline" size={24} color="white" />
-            </View>
-            <Text style={styles.navLabelActive}>Community</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.navItem}>
-            <Ionicons name="person-outline" size={24} color={colours.darkPurple} />
-            <Text style={styles.navLabel}>Profile</Text>
-        </TouchableOpacity>
-      </View>
+      <BottomNav currentTab="community" />
     </View>
   );
 }
@@ -165,39 +148,4 @@ const styles = StyleSheet.create({
     color: 'gray',
     textAlign: 'center'
   },
-  nav: { 
-    flexDirection: 'row', 
-    justifyContent: 'space-around', 
-    paddingVertical: 15, 
-    borderTopWidth: 1, 
-    borderColor: '#eee',
-    backgroundColor: colours.background,
-    position: 'absolute',
-    bottom: 0,
-    width: '100%',
-    height: 75,
-  },
-  navItem: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  navItemActive: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  navLabel: {
-    fontSize: 12,
-    color: colours.darkPurple,
-    marginTop: 4,
-  },
-  navLabelActive: {
-    fontSize: 12,
-    color: colours.darkPurple,
-    marginTop: 4,
-  },
-  activeIconContainer: {
-    backgroundColor: colours.darkPurple,
-    padding: 10,
-    borderRadius: 50,
-  },  
 });

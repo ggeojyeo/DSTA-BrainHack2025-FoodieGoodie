@@ -33,11 +33,14 @@ export default function Question2() {
         <TextInput style={styles.input} keyboardType="numeric" value={instant} onChangeText={setInstant} />
       </View>
 
-      <TouchableOpacity style={styles.button} onPress = {() => navigation.navigate('Community')}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('InventoryTracking', { hasData: true })}
+      >
         <Text style={styles.buttonText}>Done</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={{ marginTop: 10 }}>
+      <TouchableOpacity style={{ marginTop: 10 }} onPress={() => navigation.navigate('InventoryTracking', { hasData: false })}>
         <Text style={{ color: "#999", textAlign: "center" }}>Skip This Step</Text>
       </TouchableOpacity>
     </View>
