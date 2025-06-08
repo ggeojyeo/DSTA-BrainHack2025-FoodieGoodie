@@ -1,71 +1,141 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
-import { colours } from "../utils/colours";
+import { colours } from '../utils/colours';
 
 export default function Question2() {
-  const [rice, setRice] = useState("");
-  const [canned, setCanned] = useState("");
-  const [instant, setInstant] = useState("");
   const navigation = useNavigation();
+  const [openCategory, setOpenCategory] = useState(null);
+  const [formData, setFormData] = useState({});
+
+  const categories = [
+    {
+      title: "Staples & Dry Goods",
+      fields: [
+        { label: "Rice/Noodles", unit: "kg" },
+        { label: "Snacks", unit: "units" },
+      ],
+    },
+    {
+      title: "Meat, Vegetables & Fruits",
+      fields: [
+        { label: "Eggs", unit: "units" },
+        { label: "Milk", unit: "litres" },
+        { label: "Bread", unit: "loaves" },
+      ],
+    },
+    {
+      title: "Beverages",
+      fields: [{ label: "Beverage", unit: "bottles" }],
+    },
+    {
+      title: "Hygiene & Sanitation",
+      fields: [{ label: "Cleaning Supplies", unit: "items" }],
+    },
+  ];
+
+  const handleInput = (label, value) => {
+    setFormData((prev) => ({ ...prev, [label]: value }));
+  };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Questionnaire</Text>
+    <ScrollView style={styles.container}>
+      <View style={styles.headerRow}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.back}>
+          <Ionicons name="arrow-back" size={24} color="black" />
+        </TouchableOpacity>
+        <Text style={styles.header}>Questionnaire</Text>
+      </View>
       <View style={styles.progressBar}>
         <View style={styles.progressFill} />
       </View>
       <Text style={styles.step}>Step 2 of 2</Text>
       <Text style={styles.title}>Current Supply List</Text>
 
-      <View style={styles.inputGroup}>
-        <Text>Rice/Noodles (kg)</Text>
-        <TextInput style={styles.input} keyboardType="numeric" value={rice} onChangeText={setRice} />
-      </View>
+      {categories.map((cat, index) => (
+        <View key={index} style={styles.categoryBox}>
+          <TouchableOpacity
+            style={styles.categoryHeader}
+            onPress={() => setOpenCategory(openCategory === index ? null : index)}
+          >
+            <Text style={styles.categoryTitle}>{cat.title}</Text>
+            <Ionicons
+              name={openCategory === index ? "chevron-up" : "chevron-down"}
+              size={20}
+              color="#333"
+            />
+          </TouchableOpacity>
 
-      <View style={styles.inputGroup}>
-        <Text>Canned Food (units)</Text>
-        <TextInput style={styles.input} keyboardType="numeric" value={canned} onChangeText={setCanned} />
-      </View>
+          {openCategory === index && (
+            <View style={styles.fields}>
+              {cat.fields.map((field, i) => (
+                <View key={i} style={styles.inputRow}>
+                  <TextInput
+                    style={styles.input}
+                    placeholder={field.label}
+                    keyboardType="numeric"
+                    onChangeText={(text) => handleInput(field.label, text)}
+                  />
+                  <Text>{field.unit}</Text>
+                </View>
+              ))}
+            </View>
+          )}
+        </View>
+      ))}
 
-      <View style={styles.inputGroup}>
-        <Text>Instant Food (units)</Text>
-        <TextInput style={styles.input} keyboardType="numeric" value={instant} onChangeText={setInstant} />
-      </View>
-
-      <TouchableOpacity style={styles.button} onPress = {() => navigation.navigate('Community')}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate("MainTabs", { 
+          screen:"InventoryTracking",
+          params:{hasData: true },
+        })}
+      >
         <Text style={styles.buttonText}>Done</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={{ marginTop: 10 }}>
-        <Text style={{ color: "#999", textAlign: "center" }}>Skip This Step</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("MainTabs", { 
+          screen:"InventoryTracking",
+          params:{hasData: false },
+        })}
+      >
+        <Text style={styles.skip}>Skip This Step</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
+
   );
 }
 
 const styles = StyleSheet.create({
-  container: { 
-    flex: 1, 
-    padding: 20, 
-    paddingTop: 60,
-    backgroundColor: "#fff"
+  container: {
+    flex: 1,
+    padding: 20,
+    paddingTop: '25%',
+    backgroundColor: "#fff",
+  },
+  headerRow: {
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 8,
+    position: 'relative',
   },
   header: {
-    fontSize: 18,
-    fontWeight: "600",
+    fontSize: 24,
+    fontWeight: "bold",
     textAlign: "center",
-    marginBottom: 8,
-  },
+  },  
   progressBar: {
     height: 6,
     backgroundColor: "#eee",
     borderRadius: 10,
     overflow: "hidden",
     marginHorizontal: 20,
+    marginBottom: 10,
   },
   progressFill: {
-    width: "100%", 
+    width: "100%",
     height: "100%",
     backgroundColor: colours.lightPurple,
   },
@@ -73,31 +143,69 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: "#777",
     textAlign: "center",
+    marginBottom: 16,
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: "500",
+    textAlign: "center",
     marginBottom: 20,
   },
-  title: { 
-    fontSize: 16, 
-    fontWeight: "500", 
-    marginBottom: 20, 
-    textAlign: "center" 
+  categoryBox: {
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: "#ddd",
+    borderRadius: 10,
   },
-  inputGroup: { 
-    marginBottom: 20 
+  categoryHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 14,
+    backgroundColor: "#f7f7f7",
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
   },
-  input: { 
-    borderWidth: 1, 
-    borderColor: "#ccc", 
-    padding: 12, 
-    borderRadius: 10 
+  categoryTitle: {
+    fontWeight: "600",
+    fontSize: 14,
   },
-  button: { 
+  fields: {
+    padding: 12,
+    backgroundColor: "#fff",
+  },
+  inputRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  input: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    padding: 8,
+    marginRight: 10,
+    borderRadius: 6,
+  },
+  button: {
     backgroundColor: colours.darkPurple,
-    padding: 15, 
-    borderRadius: 10, 
-    alignItems: "center" 
+    paddingVertical: 15,
+    borderRadius: 10,
+    marginTop: 20,
+    alignItems: "center",
   },
-  buttonText: { 
-    color: "white", 
-    fontWeight: "bold" 
+  buttonText: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 18,
   },
+  skip: {
+    textAlign: "center",
+    color: "#aaa",
+    marginTop: 14,
+    textDecorationLine: "underline",
+  },
+  back: {
+    position: 'absolute',
+    left: 5,
+  },  
 });
