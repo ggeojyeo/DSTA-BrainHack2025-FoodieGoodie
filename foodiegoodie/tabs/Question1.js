@@ -95,12 +95,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    paddingTop: 60,
+    paddingTop: '25%',
     backgroundColor: "#fff",
   },
   header: {
-    fontSize: 18,
-    fontWeight: "600",
+    fontSize: 24,
+    fontWeight: "bold",
     textAlign: "center",
     marginBottom: 8,
   },
@@ -176,5 +176,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     fontWeight: "bold",
+    fontSize: 18,
   },
 });
