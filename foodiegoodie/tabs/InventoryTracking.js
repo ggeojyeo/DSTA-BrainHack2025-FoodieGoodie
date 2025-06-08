@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { colours } from '../utils/colours';
-import BottomNav from '../utils/BottomNav';
 
 export default function InventoryTracking() {
     const route = useRoute();
@@ -84,8 +83,6 @@ export default function InventoryTracking() {
             </TouchableOpacity>
         )}
 
-        {/* Bottom Nav */}
-        <BottomNav currentTab="profile" />
     </View>
   );
 }

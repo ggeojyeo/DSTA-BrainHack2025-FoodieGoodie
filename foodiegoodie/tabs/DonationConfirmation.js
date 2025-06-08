@@ -28,7 +28,7 @@ export default function DonationConfirmation() {
 
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('Community')}
+        onPress={() => navigation.navigate('MainTabs', { screen: 'Community' })}
       >
         <Text style={styles.buttonText}>Return to Homepage</Text>
       </TouchableOpacity>

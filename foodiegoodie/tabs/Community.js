@@ -54,9 +54,6 @@ export default function Community() {
           onItemPress={(item) => navigation.navigate('SelectQuantity', { item })}
         />
       </ScrollView>
-
-      {/* Bottom Nav */}
-      <BottomNav currentTab="community" />
     </View>
   );
 }
