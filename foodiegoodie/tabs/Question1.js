@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     View,
     Text,
@@ -10,13 +10,91 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { colours } from "../utils/colours";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Question1() {
     const [adults, setAdults] = useState(0);
     const [children, setChildren] = useState(0);
     const [seniors, setSeniors] = useState(0);
     const [hasPets, setHasPets] = useState(false);
+    const [recordExists, setRecordExists] = useState(false);
+
     const navigation = useNavigation();
+    const API_URL = process.env.EXPO_PUBLIC_API_URL;
+
+    useEffect(() => {
+        const loadExistingData = async () => {
+            try {
+                const token = await AsyncStorage.getItem("userToken");
+                const email = await AsyncStorage.getItem("userEmail");
+
+                if (!token || !email) return;
+
+                const res = await fetch(`${API_URL}/api/home-ques/searchByUser?username=${email}`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    const record = data.data;
+                    setAdults(record.adults);
+                    setChildren(record.children);
+                    setSeniors(record.seniors);
+                    setHasPets(record.pets);
+                    setRecordExists(true);
+                }
+            } catch (err) {
+                console.error("Error loading home questionnaire:", err);
+            }
+        };
+
+        loadExistingData();
+    }, []);
+
+    const handleContinue = async () => {
+        try {
+            const token = await AsyncStorage.getItem("userToken");
+            const email = await AsyncStorage.getItem("userEmail");
+
+            const body = {
+                username: email,
+                adults,
+                children,
+                seniors,
+                pets: hasPets,
+            };
+
+            const endpoint = recordExists
+                ? `${API_URL}/api/home-ques/edit`
+                : `${API_URL}/api/home-ques/create`;
+
+            const method = recordExists ? "PUT" : "POST";
+
+            const res = await fetch(endpoint, {
+                method,
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify(body),
+            });
+
+            if (res.ok) {
+                navigation.navigate("Question2");
+            } else {
+                const error = await res.json();
+                Alert.alert("Error", error.message || "Could not save questionnaire.");
+            }
+        } catch (err) {
+            console.error("Submit Error:", err);
+            Alert.alert("Error", "Something went wrong.");
+        }
+    };
+
 
     const CounterCard = ({ icon, label, value, setValue }) => (
         <View style={styles.card}>
@@ -81,10 +159,7 @@ export default function Question1() {
                 <Switch value={hasPets} onValueChange={setHasPets} />
             </View>
 
-            <TouchableOpacity
-                style={styles.button}
-                onPress={() => navigation.navigate("Question2")}
-            >
+            <TouchableOpacity style={styles.button} onPress={handleContinue}>
                 <Text style={styles.buttonText}>Continue</Text>
             </TouchableOpacity>
         </View>

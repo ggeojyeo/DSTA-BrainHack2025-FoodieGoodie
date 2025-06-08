@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const HomeQuesSchema = new mongoose.Schema({
-    username: {
+    email: {
         type: String,
         required: true,
         unique: true, // one questionnaire per user
