@@ -3,7 +3,7 @@ import { View, Text, Image, Pressable, StyleSheet, TouchableOpacity } from 'reac
 import { useNavigation } from '@react-navigation/native';
 import {colours} from '../utils/colours';
 
-export default function SelectedStoreNavBar() {
+export default function SearchItemPageNavBar() {
   const navigation = useNavigation();
 
   return (
@@ -29,6 +29,6 @@ const styles = StyleSheet.create({
       marginVertical: 30,
       marginBottom: 0,
     },
-    icon: { width: 30, height: 30 },
-    title: { fontSize: 20, fontWeight: "bold" },
+  icon: { width: 30, height: 30 },
+  title: { fontSize: 20, fontWeight: "bold" },
 });

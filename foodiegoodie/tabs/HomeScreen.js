@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { View, Text, StyleSheet, TextInput, FlatList, Image, ScrollView, TouchableOpacity, RefreshControl } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
@@ -6,6 +6,8 @@ import { useNavigation } from "@react-navigation/native";
 import BottomNavBar from "../components/BottomNavBar";
 import { colours } from "../utils/colours";
 import HomeNavBar from "../components/HomeNavBar";
+import HomeStoreCard from "../components/HomeStoreCard";
+import { StoreContext } from "../context/StoreContext";
 
 export default function HomeScreen() {
   const navigation = useNavigation();
@@ -37,7 +39,7 @@ export default function HomeScreen() {
           id: "1",
           name: "Fairprice Tampines CC",
           distance: "200m",
-          address: "867 Tampines Street 83",
+          address: "Blk 866A Tampines Street 83, Tampines Central 1, #01-01 Community Complex, 521866",
           image: require("../assets/fairprice.jpg"),
         },
         {
@@ -53,7 +55,6 @@ export default function HomeScreen() {
       setClosestStore(dummyStores[0]);
     })();
   }, []);
-
   return (
     <View style={styles.container}>
       <ScrollView 
@@ -102,41 +103,23 @@ export default function HomeScreen() {
             onChangeText={setSearch}
             style={styles.searchBar}
           />
-          <TouchableOpacity style={styles.searchBtn} nPress={() => navigation.navigate("")}>
+          <TouchableOpacity style={styles.searchBtn} onPress={() => navigation.navigate("")}>
             <Image source={require("../assets/searchIcon.png")} style={styles.searchIcon} />
           </TouchableOpacity>
         </View>
-        <View style={{ height: 340, marginTop: 8, marginBottom: 8 }}>
+        <View style={{marginTop: 8, marginBottom: 8 }}>
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
             data={stores.filter((s) => s.name.toLowerCase().includes(search.toLowerCase()))}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
-              <View style={styles.storeCard}>
-                <View style={{width: 275, height: 150, transform: [{translateX:-12}, {translateY:-12}],borderTopLeftRadius: 8, borderTopRightRadius: 8, overflow: 'hidden'}}>
-                  <Image source={item.image} style={styles.storeImage} />
-                </View>
-                <Text style={styles.storeName}>{item.name}</Text>
-                <Text style={styles.storeDistance}>{item.distance} away</Text>
-                <Text style={styles.storeInfo}>Address: {item.address}</Text>
-                <View style={styles.storeButtons}>
-                  <TouchableOpacity style={styles.checkCardBtn}>
-                    <Image source={require("../assets/checkIcon.png")} style={styles.directionsIcon} />
-                    <Text>Check</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.directionsCardBtn}>
-                    <Image source={require("../assets/whiteDirectionIcon.png")} style={styles.directionsIcon} />
-                    <Text style={{color: 'white'}}>Directions</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
+              <HomeStoreCard storeName={item.name} storeImage={item.image} storeDistance={item.distance} storeAddress={item.address}/>
             )}
           />
         </View>
       </ScrollView>
 
-      {/* Bottom Nav */}
       <BottomNavBar />
     </View>
   );
@@ -158,6 +141,7 @@ const styles = StyleSheet.create({
     outlineColor: 'black',
     outlineWidth: 2,
     marginBottom: 6,
+    elevation:3,
   },
   cardSummary: {
     backgroundColor: "#F8F9FA",
@@ -172,7 +156,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.3,
     shadowRadius: 6,
-    elevation: 14,
+    elevation: 3,
   },
   directionsBtn: {
     flexDirection: "row",
@@ -208,60 +192,5 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     backgroundColor: '#F8F9FA',
-  },
-  storeCard: {
-    width: 275,
-    marginVertical:2,
-    marginHorizontal: 10,
-    padding: 12,
-    backgroundColor: "#F8F9FA",
-    borderRadius: 12,
-    shadowColor: 'black',
-    shadowOffset: {
-        width: 0,
-        height: 4,
-    },
-    shadowOpacity: 0.3,
-    shadowRadius: 6,
-    elevation: 14,
-  },
-  storeImage: {
-    width: "100%",
-    height: "100%",
-    marginBottom: 8,
-  },
-  storeName: { fontWeight: "bold", fontSize: 20 },
-  storeDistance: {fontSize: 12, color: "#666", marginBottom: 30},
-  storeInfo: { fontSize: 12, color: "#666", marginBottom: 16 },
-  storeButtons: { flexDirection: "row", justifyContent: "space-between" },
-  checkCardBtn: {
-    backgroundColor: "white",
-    padding: 6,
-    borderRadius: 30,
-    height: 40,
-    width: 80,
-    outlineColor: '#CAC4D0',
-    outlineWidth: 1,
-    marginTop: 8,
-    alignItems: 'center',
-    flexDirection: 'row',
-    verticalAlign: 'auto',
-    justifyContent: 'center',
-    marginLeft: 15,
-  },
-  directionsCardBtn: {
-    backgroundColor: "#24167A",
-    outlineColor: '#CAC4D0',
-    outlineWidth: 1,
-    height: 40,
-    width: 120,
-    padding: 6,
-    borderRadius: 30,
-    marginTop: 8,
-    alignItems: 'center',
-    flexDirection: 'row',
-    verticalAlign: 'auto',
-    justifyContent: 'center',
-    marginRight: 15,
   },
 });
