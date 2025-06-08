@@ -5,7 +5,8 @@ const SupplyQues = require('../models/SupplyQues');
 // POST /api/supply-ques/create
 exports.createSupplyQues = async (req, res) => {
     try {
-        const { email, eggs, milk, bread, rice, snacks, beverage, cleaningSupplies } = req.body;
+        const email = req.user.email;
+        const { eggs, milk, bread, rice, snacks, beverage, cleaningSupplies } = req.body;
 
         // 1. Check if user already has a supplyQues record
         const existing = await SupplyQues.findOne({ email });
@@ -38,7 +39,7 @@ exports.createSupplyQues = async (req, res) => {
 // GET /api/supply-ques/searchByUser
 exports.getSupplyQues = async (req, res) => {
     try {
-        const { email } = req.query;
+        const email = req.user.email;
 
         const supplyQues = await SupplyQues.findOne({ email })
         if (supplyQues) {
@@ -54,7 +55,8 @@ exports.getSupplyQues = async (req, res) => {
 // PUT /api/supply-ques/edit
 exports.editSupplyQues = async (req, res) => {
     try {
-        const { email, eggs, milk, bread, rice, snacks, beverage, cleaningSupplies } = req.body;
+        const email = req.user.email;
+        const { eggs, milk, bread, rice, snacks, beverage, cleaningSupplies } = req.body;
 
         const existing = await SupplyQues.findOne({ email });
         if (!existing) {

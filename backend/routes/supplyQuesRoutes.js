@@ -3,8 +3,8 @@ const router = express.Router();
 const { createSupplyQues, getSupplyQues, editSupplyQues } = require('../controllers/supplyQuesController');
 const authMiddleware = require("../middleware/authMiddleware");
 
-router.post('/create', createSupplyQues);
-router.get('/searchByUser', getSupplyQues);
-router.put('/edit', editSupplyQues);
+router.post('/create', authMiddleware, createSupplyQues);
+router.get('/searchByUser', authMiddleware, getSupplyQues);
+router.put('/edit', authMiddleware, editSupplyQues);
 
 module.exports = router;

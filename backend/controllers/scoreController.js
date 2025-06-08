@@ -1,20 +1,18 @@
-// controllers/scoreController.js
-
 const HomeQues = require('../models/HomeQues');
 const SupplyQues = require('../models/SupplyQues');
 const { getRecommendedSupply, calculateSupplyScore } = require('../utils/calculateSupplyScore');
 
-// GET /api/supply-score?username=
+// GET /api/supply-score?email=
 exports.getSupplyScore = async (req, res) => {
     try {
-        const { username } = req.query;
-        if (!username) {
-            return res.status(400).json({ message: "Username is required." });
+        const email = req.user.email;
+        if (!email) {
+            return res.status(400).json({ message: "Email is required." });
         }
 
-        // Fetch home and supply records
-        const homeQues = await HomeQues.findOne({ username });
-        const supplyQues = await SupplyQues.findOne({ username });
+        // Fetch home and supply records 
+        const homeQues = await HomeQues.findOne({ email });
+        const supplyQues = await SupplyQues.findOne({ email });
 
         if (!homeQues || !supplyQues) {
             return res.status(404).json({ message: "Required data not found." });
