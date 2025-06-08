@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { colours } from "../utils/colours";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 
 export default function SignUpScreen() {
@@ -35,8 +37,21 @@ export default function SignUpScreen() {
                 return;
             }
 
+            if (data.token) {
+                await AsyncStorage.setItem("userToken", data.token);
+            }
+
+            // ✅ Store email too if needed
+            await AsyncStorage.setItem("userEmail", email);
+
             Alert.alert("Sign up successful! Welcome to FoodieGoodie!");
-            navigation.navigate("Question1");
+
+            // ✅ Navigate to Questionnaire with email param
+            navigation.reset({
+                index: 0,
+                routes: [{ name: "Question1", params: { email } }],
+            });
+
 
         } catch (error) {
             console.error("Sign Up Error:", error);

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { colours } from "../utils/colours";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function LoginScreen() {
     const navigation = useNavigation();
@@ -32,32 +33,40 @@ export default function LoginScreen() {
                 return;
             }
 
+            await AsyncStorage.setItem("userToken", data.token);
+            await AsyncStorage.setItem("userEmail", data.user.email);
+
             Alert.alert("Login Successful", "Welcome back!");
 
-            const questionaireRes = await fetch(`${API_URL}/api/supply-ques/searchByUser?email=${email}`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${data.token}`,
-                },
-            });
+            const questionnaireRes = await fetch(
+                `${API_URL}/api/supply-ques/searchByUser?email=${email}`,
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${data.token}`,
+                    },
+                }
+            );
 
-            if (questionaireRes.ok) {
+            if (questionnaireRes.ok) {
                 navigation.reset({
                     index: 0,
                     routes: [
                         {
-                            name: 'MainTabs',
+                            name: "MainTabs",
                             state: {
                                 index: 0,
-                                routes: [{ name: 'Home' }],
+                                routes: [{ name: "Home" }],
                             },
                         },
                     ],
                 });
-
-            } else if (questionaireRes.status === 404) {
-                navigation.navigate("Question1");
+            } else if (questionnaireRes.status === 404) {
+                navigation.reset({
+                    index: 0,
+                    routes: [{ name: "Question1", params: { email } }],
+                });
             } else {
                 Alert.alert("Error", "Unable to check questionnaire status.");
             }

@@ -1,12 +1,27 @@
 const User = require('../models/User');
 const jwt = require("jsonwebtoken");
-//const JWT_SECRET = process.env.JWT_SECRET;
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // POST /api/users/register
 exports.createUser = async (req, res) => {
     try {
         const user = await User.create(req.body);
-        res.status(201).json(user);
+
+        const token = jwt.sign({ email: user.email }, JWT_SECRET, {
+            expiresIn: "12h",
+        });
+
+        res.status(201).json({
+            message: "Signup successful",
+            token,
+            user: {
+                email: user.email,
+                mobile: user.mobile,
+                address: user.address,
+            },
+        });
+
     } catch (err) {
         res.status(400).json({ error: err.message });
     }
@@ -24,25 +39,30 @@ exports.getUsers = async (req, res) => {
 
 // POST /api/users/login
 exports.loginUser = async (req, res) => {
-    const {email, password} = req.body;
+    const { email, password } = req.body;
 
     try {
-        const user = await User.findOne({email});
+        const user = await User.findOne({ email });
 
         if (!user || user.password !== password) {
-            return res.status(401).json({error: "Invalid credentials"});
+            return res.status(401).json({ error: "Invalid credentials" });
         }
 
-        /*const token = jwt.sign (
-            {userId: user._id},
-            JWT_SECRET,
-            {expiresIn: "12h"}
-        );
-        res.json({token});*/
+        const token = jwt.sign({ email: user.email }, JWT_SECRET, {
+            expiresIn: "12h",
+        });
 
-        return res.json({message:"Login successful"})
+        res.json({
+            message: "Login successful",
+            token,
+            user: {
+                email: user.email,
+                mobile: user.mobile,
+                address: user.address,
+            },
+        });
     } catch (err) {
-        res.status(500).json({error: "Server error"})
+        res.status(500).json({ error: "Server error" })
     }
 }
 
