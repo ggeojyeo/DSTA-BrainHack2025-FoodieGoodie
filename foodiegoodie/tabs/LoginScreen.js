@@ -33,7 +33,34 @@ export default function LoginScreen() {
             }
 
             Alert.alert("Login Successful", "Welcome back!");
-            navigation.navigate("Question1");
+
+            const questionaireRes = await fetch(`${API_URL}/api/supply-ques/searchByUser?email=${email}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${data.token}`,
+                },
+            });
+
+            if (questionaireRes.ok) {
+                navigation.reset({
+                    index: 0,
+                    routes: [
+                        {
+                            name: 'MainTabs',
+                            state: {
+                                index: 0,
+                                routes: [{ name: 'Home' }],
+                            },
+                        },
+                    ],
+                });
+
+            } else if (questionaireRes.status === 404) {
+                navigation.navigate("Question1");
+            } else {
+                Alert.alert("Error", "Unable to check questionnaire status.");
+            }
 
         } catch (error) {
             Alert.alert("Error", "Something went wrong. Please try again.");

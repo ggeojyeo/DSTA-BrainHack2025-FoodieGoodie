@@ -36,7 +36,7 @@ export default function SignUpScreen() {
             }
 
             Alert.alert("Sign up successful! Welcome to FoodieGoodie!");
-            navigation.navigate("Login");
+            navigation.navigate("Question1");
 
         } catch (error) {
             console.error("Sign Up Error:", error);

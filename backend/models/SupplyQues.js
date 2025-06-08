@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const SupplyQuesSchema = new mongoose.Schema({
-  username: {
+  email: {
     type: String,
     required: true,
     unique: true
