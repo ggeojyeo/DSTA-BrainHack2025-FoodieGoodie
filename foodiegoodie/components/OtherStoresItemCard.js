@@ -10,15 +10,6 @@ export default function OtherBrandsItemCard({ otherStoreName, otherStoreImage, o
 
     const { store, setStore } = useContext(StoreContext);
 
-    useEffect(() => {
-        setStore({
-            name: otherStoreName,
-            stock: otherStoreStock,
-            image: otherStoreImage,
-            address: otherStoreAddress,
-        });
-    }, [otherStoreName, otherStoreImage, otherStoreAddress, otherStoreStock]);
-
     return (
         <View style={styles.itemCard}>
             <Image source={otherStoreImage} style={styles.otherStoreImage}/>
@@ -40,7 +31,12 @@ export default function OtherBrandsItemCard({ otherStoreName, otherStoreImage, o
                 )}
             </View>
             <View style={styles.itemButtons}>
-                <TouchableOpacity style={styles.otherDirectionBtn} onPress={() => {navigation.navigate("OtherBrandsScreen")}}>
+                <TouchableOpacity style={styles.otherDirectionBtn} onPress={() => {setStore({
+            name: otherStoreName,
+            stock: otherStoreStock,
+            image: otherStoreImage,
+            address: otherStoreAddress,
+        }); navigation.navigate("HomeStoreCommunityProfileScreen")}}>
                     <Image source={require("../assets/whiteDirectionIcon.png")} style={styles.directionsIcon} />
                     <Text style={{color: 'white'}}>Directions</Text>
                 </TouchableOpacity>

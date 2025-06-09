@@ -48,7 +48,7 @@ export default function OtherBrandsScreen() {
         <View style={styles.container}>
             <ScrollView contentContainerStyle={{paddingBottom: 80}}>
                 <OtherBrandsNavBar/>
-                <Text style={[styles.title, {marginBottom: 10}]}>Showing 3 Other Results of ""</Text> {/*need to set up a context hook for search items to be able to parse them correctly and display them as wanted */}
+                <Text style={[styles.title, {marginBottom: 10}]}>Showing 3 Other Results</Text>
                 <View style={styles.searchContainer}>
                     <TextInput
                     placeholder="Search for Brand..."
@@ -56,9 +56,9 @@ export default function OtherBrandsScreen() {
                     onChangeText={setOtherBrandsSearch}
                     style={styles.searchBar}
                     />
-                    <TouchableOpacity style={styles.searchBtn} onPress={() => navigation.navigate("SearchItemPage",{searchedValue: otherBrandsSearch})}>
+                    {/* <TouchableOpacity style={styles.searchBtn} onPress={() => navigation.navigate("SearchItemPage",{searchedValue: otherBrandsSearch})}>
                     <Image source={require("../assets/searchIcon.png")} style={styles.searchIcon} />
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
                 <View style={{marginTop: 8, marginBottom: 8 }}>
                     <FlatList

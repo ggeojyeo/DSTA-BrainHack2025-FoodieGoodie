@@ -3,7 +3,7 @@ import { View, Text, Image, Pressable, StyleSheet, TouchableOpacity } from 'reac
 import { useNavigation } from '@react-navigation/native';
 import {colours} from '../utils/colours';
 
-export default function SearchItemPageNavBar() {
+export default function SettingsScreenNavBar() {
   const navigation = useNavigation();
 
   return (
@@ -11,7 +11,7 @@ export default function SearchItemPageNavBar() {
       <TouchableOpacity onPress={() => navigation.goBack()}>            
         <Image source={require("../assets/backIcon.png")} style={styles.icon} />
       </TouchableOpacity>
-      <Text style={styles.title}>Store</Text>
+      <Text style={styles.title}>Settings</Text>
       <TouchableOpacity onPress={() => navigation.navigate("Profile")}>            
         <Image source={require("../assets/profileIcon.png")} style={styles.icon} />
       </TouchableOpacity>
@@ -30,5 +30,5 @@ const styles = StyleSheet.create({
       marginBottom: 0,
     },
   icon: { width: 30, height: 30 },
-  title: { fontSize: 20, fontWeight: "bold" },
+  title: { fontSize: 20, fontWeight: "bold", color: colours.lightPurple },
 });

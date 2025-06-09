@@ -41,7 +41,7 @@ export default function OtherBrandsItemCard({ itemName, itemStock, itemImage, it
                 )}
             </View>
             <View style={styles.itemButtons}>
-                <TouchableOpacity style={styles.otherDirectionBtn} onPress={() => {navigation.navigate("OtherBrandsScreen")}}>
+                <TouchableOpacity style={styles.otherDirectionBtn} onPress={() => {navigation.navigate("HomeStoreCommunityProfileScreen")}}>
                     <Image source={require("../assets/whiteDirectionIcon.png")} style={styles.directionsIcon} />
                     <Text style={{color: 'white'}}>Directions</Text>
                 </TouchableOpacity>

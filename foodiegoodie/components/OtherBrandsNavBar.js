@@ -12,7 +12,7 @@ export default function OtherBrandsNavBar() {
         <Image source={require("../assets/backIcon.png")} style={styles.icon} />
       </TouchableOpacity>
       <Text style={styles.title}>Other Brands</Text>
-      <TouchableOpacity onPress={() => navigation.navigate("Profile")}>            
+      <TouchableOpacity>            
         <Image source={require("../assets/profileIcon.png")} style={styles.icon} />
       </TouchableOpacity>
     </View>

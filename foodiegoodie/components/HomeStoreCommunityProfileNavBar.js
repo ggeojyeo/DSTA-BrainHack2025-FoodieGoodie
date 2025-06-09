@@ -3,15 +3,15 @@ import { View, Text, Image, Pressable, StyleSheet, TouchableOpacity } from 'reac
 import { useNavigation } from '@react-navigation/native';
 import {colours} from '../utils/colours';
 
-export default function TopNavBar() {
+export default function HomeStoreCommunityProfileNavBar() {
   const navigation = useNavigation();
 
   return (
     <View style={styles.navContainer}>
-      <TouchableOpacity onPress={() => navigation.navigate("SettingsScreen")}>            
-        <Image source={require("../assets/settingsIcon.png")} style={styles.icon} />
+      <TouchableOpacity onPress={() => navigation.goBack()}>            
+        <Image source={require("../assets/backIcon.png")} style={styles.icon} />
       </TouchableOpacity>
-      <Text style={styles.title}>Home</Text>
+      <Text style={styles.title}>Google Maps</Text>
       <TouchableOpacity>            
         <Image source={require("../assets/profileIcon.png")} style={styles.icon} />
       </TouchableOpacity>
@@ -29,6 +29,6 @@ const styles = StyleSheet.create({
       marginVertical: 30,
       marginBottom: 0,
     },
-    icon: { width: 30, height: 30 },
-    title: { fontSize: 20, fontWeight: "bold" },
+  icon: { width: 30, height: 30 },
+  title: { fontSize: 20, fontWeight: "bold" },
 });

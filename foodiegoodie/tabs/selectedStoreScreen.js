@@ -60,7 +60,7 @@ export default function SelectedStoreScreen() {
                     <Text style={{ marginBottom: 10 }}>
                         {store?.address}
                     </Text>
-                    <TouchableOpacity style={styles.directionsBtn}>
+                    <TouchableOpacity style={styles.directionsBtn} onPress={() => navigation.navigate("HomeStoreCommunityProfileScreen")}>
                         <Image source={require("../assets/purpleDirectionIcon.png")} style={styles.directionsIcon} />
                         <Text style={{ color: "#583CFF" }}>Directions</Text>
                     </TouchableOpacity>
@@ -73,9 +73,9 @@ export default function SelectedStoreScreen() {
                     onChangeText={setSearch}
                     style={styles.searchBar}
                     />
-                    <TouchableOpacity style={styles.searchBtn} onPress={() => navigation.navigate("SearchItemPage",{searchedValue: search})}>
+                    {/* <TouchableOpacity style={styles.searchBtn} onPress={() => navigation.navigate("SearchItemPage",{searchedValue: search})}>
                     <Image source={require("../assets/searchIcon.png")} style={styles.searchIcon} />
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
                 <View style={{marginTop: 8, marginBottom: 8 }}>
                     <FlatList
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff" 
     },
     storeName: {
-        fontSize: 20,
+        fontSize: 24,
         fontWeight: "bold",
         color: "#4B0082",   
         marginLeft: 16,

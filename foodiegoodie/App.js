@@ -12,13 +12,13 @@ import CommunityScreen from './tabs/CommunityScreen';
 import ProfileScreen from './tabs/ProfileScreen';
 import SettingsScreen from './tabs/SettingsScreen';
 import SelectedStoreScreen from './tabs/SelectedStoreScreen';
-import SearchItemPage from './tabs/SearchItemPage';
 import { StoreProvider } from './context/StoreContext';
 import { ItemProvider } from './context/ItemContext';
 import HomeStoreCard from './components/HomeStoreCard';
 import SelectedStoreCard from './components/SelectedStoreCard';
 import OtherBrandsScreen from './tabs/OtherBrandsScreen';
 import OtherStoresScreen from './tabs/OtherStoresScreen';
+import HomeStoreCommunityProfileScreen from './tabs/HomeStoreCommunityProfileScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,9 +39,9 @@ export default function App() {
             <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
             <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
             <Stack.Screen name="SelectedStoreScreen" component={SelectedStoreScreen} />
-            <Stack.Screen name="SearchItemPage" component={SearchItemPage} />
             <Stack.Screen name="OtherBrandsScreen" component={OtherBrandsScreen} />
             <Stack.Screen name="OtherStoresScreen" component={OtherStoresScreen} />
+            <Stack.Screen name="HomeStoreCommunityProfileScreen" component={HomeStoreCommunityProfileScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </ItemProvider>

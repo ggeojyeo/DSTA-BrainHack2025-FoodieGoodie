@@ -28,7 +28,12 @@ export default function HomeStoreCard({ storeName, storeDistance, storeAddress, 
                     <Image source={require("../assets/checkIcon.png")} style={styles.directionsIcon} />
                     <Text>Check </Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.directionsCardBtn}>
+                <TouchableOpacity style={styles.directionsCardBtn} onPress={() => {setStore({
+                    name: storeName,
+                    distance: storeDistance,
+                    address: storeAddress,
+                    image: storeImage,
+                }),navigation.navigate("HomeStoreCommunityProfileScreen")}}>
                 <Image source={require("../assets/whiteDirectionIcon.png")} style={styles.directionsIcon} />
                 <Text style={{color: 'white'}}>Directions</Text>
                 </TouchableOpacity>

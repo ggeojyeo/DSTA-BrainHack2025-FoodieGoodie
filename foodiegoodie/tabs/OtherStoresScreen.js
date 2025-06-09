@@ -49,9 +49,9 @@ export default function OtherStoresScreen() {
                     onChangeText={setOtherStoresSearch}
                     style={styles.searchBar}
                     />
-                    <TouchableOpacity style={styles.searchBtn} onPress={() => navigation.navigate("SearchItemPage",{searchedValue: otherStoresSearch})}>
+                    {/* <TouchableOpacity style={styles.searchBtn} onPress={() => navigation.navigate("SearchItemPage",{searchedValue: otherStoresSearch})}>
                     <Image source={require("../assets/searchIcon.png")} style={styles.searchIcon} />
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
                 <View style={{marginTop: 8, marginBottom: 8 }}>
                     <FlatList

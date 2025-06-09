@@ -15,6 +15,7 @@ export default function HomeScreen() {
   const [search, setSearch] = useState("");
   const [stores, setStores] = useState([]);
   const [closestStore, setClosestStore] = useState(null);
+  const { store, setStore } = useContext(StoreContext);
 
   const [refreshing, setRefreshing] = React.useState(false);
 
@@ -88,7 +89,12 @@ export default function HomeScreen() {
           <Text style={{ marginBottom: 10 }}>
             Closest grocery store to you is {closestStore?.name}. Click the button below for directions.
           </Text>
-          <TouchableOpacity style={styles.directionsBtn}>
+          <TouchableOpacity style={styles.directionsBtn} onPress={() => {setStore({
+                    name: closestStore?.name,
+                    distance: closestStore?.distance,
+                    address: closestStore?.address,
+                    image: closestStore?.image,
+                }), navigation.navigate("HomeStoreCommunityProfileScreen")}}>
             <Image source={require("../assets/purpleDirectionIcon.png")} style={styles.directionsIcon} />
             <Text style={{ color: "#583CFF" }}>Directions</Text>
           </TouchableOpacity>
@@ -103,7 +109,7 @@ export default function HomeScreen() {
             onChangeText={setSearch}
             style={styles.searchBar}
           />
-          <TouchableOpacity style={styles.searchBtn} onPress={() => navigation.navigate("")}>
+          <TouchableOpacity style={styles.searchBtn} onPress={() => navigation.navigate("OtherStoresScreen")}>
             <Image source={require("../assets/searchIcon.png")} style={styles.searchIcon} />
           </TouchableOpacity>
         </View>

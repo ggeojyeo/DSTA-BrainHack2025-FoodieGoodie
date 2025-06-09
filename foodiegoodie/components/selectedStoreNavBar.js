@@ -12,7 +12,7 @@ export default function SelectedStoreNavBar() {
         <Image source={require("../assets/backIcon.png")} style={styles.icon} />
       </TouchableOpacity>
       <Text style={styles.title}>Store</Text>
-      <TouchableOpacity onPress={() => navigation.navigate("Profile")}>            
+      <TouchableOpacity>            
         <Image source={require("../assets/profileIcon.png")} style={styles.icon} />
       </TouchableOpacity>
     </View>
