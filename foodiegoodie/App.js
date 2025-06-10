@@ -14,7 +14,19 @@ import InventoryTracking from './tabs/InventoryTracking';
 import Community from './tabs/Community';
 import SelectQuantity from './tabs/SelectQuantity';
 import DonationDetails from './tabs/DonationDetails';
+import HomeScreen from './tabs/HomeScreen';
 import DonationConfirmation from './tabs/DonationConfirmation';
+import CommunityScreen from './tabs/CommunityScreen';
+import ProfileScreen from './tabs/ProfileScreen';
+import SettingsScreen from './tabs/SettingsScreen';
+import SelectedStoreScreen from './tabs/SelectedStoreScreen';
+import { StoreProvider } from './context/StoreContext';
+import { ItemProvider } from './context/ItemContext';
+import HomeStoreCard from './components/HomeStoreCard';
+import SelectedStoreCard from './components/SelectedStoreCard';
+import OtherBrandsScreen from './tabs/OtherBrandsScreen';
+import OtherStoresScreen from './tabs/OtherStoresScreen';
+import HomeStoreCommunityProfileScreen from './tabs/HomeStoreCommunityProfileScreen';
 
 // Home screen not ready yet, temporarily use Community as a placeholder
 const HomeScreen = Community;
@@ -92,15 +104,17 @@ function MainTabs() {
 
 export default function App() {
     return (
-        <NavigationContainer>
-            <StatusBar style="auto" />
-            <Stack.Navigator initialRouteName="SignUp" screenOptions={{ headerShown: false }}>
-                {/* Onboarding Flow */}
+    <StoreProvider>
+      <ItemProvider>
+            <NavigationContainer>
+                <StatusBar style="auto" />
+                <Stack.Navigator initialRouteName="SignUp" screenOptions={{ headerShown: false }}>
+                    {/* Onboarding Flow */}
                 <Stack.Screen name="SignUp" component={SignUpScreen} />
-                <Stack.Screen name="Login" component={LoginScreen} />
-                <Stack.Screen name="Question1" component={Question1} />
-                <Stack.Screen name="Question2" component={Question2} />
-
+                    <Stack.Screen name="Login" component={LoginScreen} />
+                    <Stack.Screen name="Question1" component={Question1} />
+                    <Stack.Screen name="Question2" component={Question2} />
+    
                 {/* Tab Navigation */}
                 <Stack.Screen name="MainTabs" component={MainTabs} />
 
@@ -108,7 +122,17 @@ export default function App() {
                 <Stack.Screen name="SelectQuantity" component={SelectQuantity} />
                 <Stack.Screen name="DonationDetails" component={DonationDetails} />
                 <Stack.Screen name="DonationConfirmation" component={DonationConfirmation} />
-            </Stack.Navigator>
-        </NavigationContainer>
+            <Stack.Screen name="HomeScreen" component={HomeScreen} />
+            <Stack.Screen name="CommunityScreen" component={CommunityScreen} />
+            <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+            <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
+            <Stack.Screen name="SelectedStoreScreen" component={SelectedStoreScreen} />
+            <Stack.Screen name="OtherBrandsScreen" component={OtherBrandsScreen} />
+            <Stack.Screen name="OtherStoresScreen" component={OtherStoresScreen} />
+            <Stack.Screen name="HomeStoreCommunityProfileScreen" component={HomeStoreCommunityProfileScreen} />
+                </Stack.Navigator>
+            </NavigationContainer>
+      </ItemProvider>
+    </StoreProvider>
     );
 }
