@@ -39,8 +39,6 @@ app.use('/api/supply-ques', supplyQuesRoutes);
 const scoreRoutes = require('./routes/scoreRoutes');
 app.use('/api/supply-score', scoreRoutes);
 
-
-
 const donationRoutes = require('./routes/donationRoutes'); 
 app.use('/api', donationRoutes); 
 

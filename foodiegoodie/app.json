@@ -23,7 +23,13 @@
         "foregroundImage": "./assets/FoodieGoodieLogo/withoutName.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyADkUa3S047IOC-LjdIueztnXeEuz87Fik"
+        }
+      },
+      "edgeToEdgeEnabled": true,
+      "package": "com.anonymous.foodiegoodie"
     },
     "web": {
       "favicon": "./assets/favicon.png"

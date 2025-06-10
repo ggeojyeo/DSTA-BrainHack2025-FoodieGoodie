@@ -8,6 +8,10 @@ import { colours } from "../utils/colours";
 import HomeNavBar from "../components/HomeNavBar";
 import HomeStoreCard from "../components/HomeStoreCard";
 import { StoreContext } from "../context/StoreContext";
+import Constants from 'expo-constants';
+import { Platform } from 'react-native';
+
+const API_URL = Constants.expoConfig.extra.API_URL;
 
 export default function HomeScreen() {
   const navigation = useNavigation();
@@ -27,35 +31,36 @@ export default function HomeScreen() {
   }, []);
 
   useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") return;
-
-      let loc = await Location.getCurrentPositionAsync({});
-      setLocation(loc.coords);
-
-      // Dummy stores for now, replace with API fetch
-      const dummyStores = [
-        {
-          id: "1",
-          name: "Fairprice Tampines CC",
-          distance: "200m",
-          address: "Blk 866A Tampines Street 83, Tampines Central 1, #01-01 Community Complex, 521866",
-          image: require("../assets/fairprice.jpg"),
-        },
-        {
-          id: "2",
-          name: "Sheng Siong",
-          distance: "350m",
-          address: "Block 888, Tampines",
-          image: require("../assets/shengsiong.jpg"),
-        },
-      ];
-
-      setStores(dummyStores);
-      setClosestStore(dummyStores[0]);
-    })();
-  }, []);
+    const fetchLocationAndStores = async () => {
+      try {
+        // Ask for permission
+        const { status } = await Location.requestForegroundPermissionsAsync();
+        if (status !== "granted") {
+          console.warn("Permission to access location was denied");
+          return;
+        }
+  
+        // Get location
+        const loc = await Location.getCurrentPositionAsync({});
+        setLocation(loc.coords);
+  
+        // Fetch stores from backend
+        const response = await fetch(`${API_URL}/api/stores/allStores`);
+        const data = await response.json();
+  
+        if (data.stores && data.stores.length > 0) {
+          setStores(data.stores);
+          setClosestStore(data.stores[0]); // optionally improve to sort by distance later
+        } else {
+          setStores([]);
+        }
+      } catch (error) {
+        console.error("Failed to fetch location or stores:", error);
+      }
+    };
+  
+    fetchLocationAndStores();
+  }, []);         
   return (
     <View style={styles.container}>
       <ScrollView 
@@ -67,7 +72,7 @@ export default function HomeScreen() {
         {/* Current Location Section */}
         <Text style={[styles.sectionHeader, {marginBottom: 10}]}>Current Location</Text>
         <View style={styles.cardMap}>
-          {location && (
+        {location?.latitude && location?.longitude ? (
             <MapView
               style={{ flex: 1, borderRadius: 10 }}
               initialRegion={{
@@ -78,9 +83,12 @@ export default function HomeScreen() {
               }}
               showsUserLocation
             >
-              <Marker coordinate={location} title="You are here" />
+              <Marker coordinate={{ latitude: location.latitude, longitude: location.longitude }} title="You are here" />
             </MapView>
+          ) : (
+            <Text style={{ padding: 20, textAlign: 'center' }}>Fetching your location...</Text>
           )}
+
         </View>
 
         {/* Summary Card */}
@@ -117,7 +125,7 @@ export default function HomeScreen() {
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
-            data={stores.filter((s) => s.name.toLowerCase().includes(search.toLowerCase()))}
+            data={stores.filter((s) => s.name && s.name.toLowerCase().includes(search.toLowerCase()))}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
               <HomeStoreCard storeName={item.name} storeImage={item.image} storeDistance={item.distance} storeAddress={item.address}/>
@@ -126,7 +134,7 @@ export default function HomeScreen() {
         </View>
       </ScrollView>
 
-      <BottomNavBar />
+      {/* <BottomNavBar /> */}
     </View>
   );
 }

@@ -3,7 +3,7 @@ import { StyleSheet, View, Image, TouchableOpacity, Text, ScrollView, TextInput,
 import { colours } from '../utils/colours';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { useState, useEffect, useContext } from 'react';
-import SelectedStoreNavBar from '../components/SelectedStoreNavBar';
+import SelectedStoreNavBar from '../components/selectedStoreNavBar';
 import BottomNavBar from '../components/BottomNavBar';
 import SelectedStoreCard from '../components/SelectedStoreCard';
 import { StoreContext } from '../context/StoreContext';

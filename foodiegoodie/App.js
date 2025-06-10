@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { View } from 'react-native';
 import { colours } from './utils/colours';
+import { Platform } from 'react-native';
 
 import SignUpScreen from './tabs/SignUpScreen';
 import LoginScreen from './tabs/LoginScreen';
@@ -19,7 +20,7 @@ import DonationConfirmation from './tabs/DonationConfirmation';
 import CommunityScreen from './tabs/CommunityScreen';
 import ProfileScreen from './tabs/ProfileScreen';
 import SettingsScreen from './tabs/SettingsScreen';
-import SelectedStoreScreen from './tabs/SelectedStoreScreen';
+import SelectedStoreScreen from './tabs/selectedStoreScreen';
 import { StoreProvider } from './context/StoreContext';
 import { ItemProvider } from './context/ItemContext';
 import HomeStoreCard from './components/HomeStoreCard';
@@ -29,7 +30,7 @@ import OtherStoresScreen from './tabs/OtherStoresScreen';
 import HomeStoreCommunityProfileScreen from './tabs/HomeStoreCommunityProfileScreen';
 
 // Home screen not ready yet, temporarily use Community as a placeholder
-const HomeScreen = Community;
+// const HomeScreen = Community;
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
