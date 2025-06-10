@@ -5,6 +5,11 @@ import { Ionicons } from '@expo/vector-icons';
 import { colours } from "../utils/colours";
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import axios from 'axios';
+import Constants from 'expo-constants';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const API_URL = Constants.expoConfig.extra.API_URL;
 
 export default function DonationDetails() {
   const [showDatePicker, setShowDatePicker] = useState(false);
@@ -36,9 +41,29 @@ export default function DonationDetails() {
   const route = useRoute();
   const { item, quantity } = route.params;
 
-  const confirmDonation = () => {
+  const confirmDonation = async () => {
     if (agreed) {
-      navigation.navigate('DonationConfirmation');
+      try {
+        const token = await AsyncStorage.getItem("userToken");
+        await axios.post(`${API_URL}/api/schedule`, {
+          itemName: item.name,
+          quantity,
+          pickupDate: date,
+          pickupTime: timeSlot,
+          location,
+          confirmedExpiryBuffer: agreed,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+        navigation.navigate('DonationConfirmation');
+      } catch (error) {
+        console.error('Failed to donate:', error);
+      }
     }
   };
 

@@ -3,6 +3,9 @@ import { View, Text, TextInput, StyleSheet, ScrollView, Image, TouchableOpacity 
 import { useNavigation } from '@react-navigation/native';
 import { colours } from "../utils/colours";
 import BottomNav from '../utils/BottomNav';
+import Constants from 'expo-constants';
+
+const API_URL = Constants.expoConfig.extra.API_URL;
 
 export default function Community() {
     const navigation = useNavigation();

@@ -21,7 +21,7 @@ exports.getDonationItems = async (req, res) => {
 // POST donation action
 exports.createDonation = async (req, res) => {
   try {
-    const { itemId, quantity } = req.body;
+    const { itemName, quantity } = req.body;
     // Save donation logic — depends on whether you want to track per-user or just logs
     res.status(200).json({ message: `Received donation of ${quantity}x item ${itemId}` });
   } catch (err) {
@@ -31,18 +31,19 @@ exports.createDonation = async (req, res) => {
 
 exports.scheduleDonation = async (req, res) => {
     try {
-      const { itemId, quantity, pickupDate, pickupTime, location, confirmedExpiryBuffer } = req.body;
+      const { itemName, quantity, pickupDate, pickupTime, location, confirmedExpiryBuffer } = req.body;
   
       if (!confirmedExpiryBuffer) {
         return res.status(400).json({ error: "Please confirm expiry of goods." });
       }
   
       const donation = await ScheduledDonations.create({
-        itemId, quantity, pickupDate, pickupTime, location, confirmedExpiryBuffer
+        itemName, quantity, pickupDate, pickupTime, location, confirmedExpiryBuffer, email: req.user.email,
       });
   
       res.status(201).json({ message: "Donation scheduled!", id: donation._id });
     } catch (err) {
+        console.error("Donation scheduling error:", err);
       res.status(500).json({ error: err.message });
     }
   };

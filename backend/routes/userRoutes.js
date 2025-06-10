@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { createUser, getUsers, loginUser, deleteAccount, updatePassword, updateMobile, updateEmail, updateAddress } = require('../controllers/userController');
 const authMiddleware = require("../middleware/authMiddleware");
+require('dotenv').config();
 
 
 router.post('/register', createUser);

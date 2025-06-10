@@ -3,10 +3,12 @@ import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, Alert } fro
 import { useNavigation } from "@react-navigation/native";
 import { colours } from "../utils/colours";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Constants from 'expo-constants';
+
 
 export default function LoginScreen() {
     const navigation = useNavigation();
-    const API_URL = process.env.EXPO_PUBLIC_API_URL;
+    const API_URL = Constants.expoConfig.extra.API_URL;
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

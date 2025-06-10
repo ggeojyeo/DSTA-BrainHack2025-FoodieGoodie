@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 import { colours } from '../utils/colours';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Constants from 'expo-constants';
 
 export default function Question2() {
     const [openCategory, setOpenCategory] = useState(null);
@@ -11,7 +12,7 @@ export default function Question2() {
     const [recordExists, setRecordExists] = useState(false);
 
     const navigation = useNavigation();
-    const API_URL = process.env.EXPO_PUBLIC_API_URL
+    const API_URL = Constants.expoConfig.extra.API_URL;
 
     useEffect(() => {
         const fetchExisting = async () => {

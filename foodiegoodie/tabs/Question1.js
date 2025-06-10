@@ -11,6 +11,8 @@ import { useNavigation } from "@react-navigation/native";
 import { colours } from "../utils/colours";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Constants from 'expo-constants';
+
 
 export default function Question1() {
     const [adults, setAdults] = useState(0);
@@ -20,7 +22,7 @@ export default function Question1() {
     const [recordExists, setRecordExists] = useState(false);
 
     const navigation = useNavigation();
-    const API_URL = process.env.EXPO_PUBLIC_API_URL;
+    const API_URL = Constants.expoConfig.extra.API_URL;
 
     useEffect(() => {
         const loadExistingData = async () => {
@@ -86,6 +88,8 @@ export default function Question1() {
             if (res.ok) {
                 navigation.navigate("Question2");
             } else {
+                console.log("Status Code:", res.status);
+                console.log("Response Text:", await res.text());
                 const error = await res.json();
                 Alert.alert("Error", error.message || "Could not save questionnaire.");
             }

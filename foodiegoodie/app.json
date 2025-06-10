@@ -7,6 +7,9 @@
     "icon": "./assets/FoodieGoodieLogo/withoutName.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
+    "extra": {
+      "API_URL": "http://10.10.1.108:5000"
+    },
     "splash": {
       "image": "./assets/FoodieGoodieLogo/withoutName.png",
       "resizeMode": "contain",

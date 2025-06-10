@@ -4,6 +4,8 @@ import { useRoute, useNavigation } from '@react-navigation/native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { colours } from '../utils/colours';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Constants from 'expo-constants';
+
 
 export default function InventoryTracking() {
     const [score, setScore] = useState(null);
@@ -12,7 +14,7 @@ export default function InventoryTracking() {
     const route = useRoute();
     const navigation = useNavigation();
     const { hasData } = route.params || { hasData: false };
-    const API_URL = process.env.EXPO_PUBLIC_API_URL;
+    const API_URL = Constants.expoConfig.extra.API_URL;
 
     useEffect(() => {
         const fetchData = async () => {
