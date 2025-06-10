@@ -65,7 +65,7 @@ export default function SelectedStoreScreen() {
                         <Text style={{ color: "#583CFF" }}>Directions</Text>
                     </TouchableOpacity>
                 </View>
-                <Text style={[styles.storeName, {marginVertical: 12}]}>Items in Stock</Text>
+                <Text style={[styles.storeName, {marginVertical: 12}]}>Items</Text>
                 <View style={styles.searchContainer}>
                     <TextInput
                     placeholder="Search for Items..."

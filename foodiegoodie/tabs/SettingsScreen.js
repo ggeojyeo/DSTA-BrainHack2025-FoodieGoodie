@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import BottomNavBar from "../components/BottomNavBar";
 import SettingsScreenNavBar from "../components/SettingsScreenNavBar";
 import { cards } from "../utils/cards";
-import ChangeUsername from "../components/settingsCard/changeUsername";
+import ChangeUsername from "../components/settingsCard/ChangeUsername";
 import ChangeContact1 from "../components/settingsCard/ChangeContact1";
 import ChangeContact2 from "../components/settingsCard/ChangeContact2";
 import ChangeEmail1 from "../components/settingsCard/ChangeEmail1";
