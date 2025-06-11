@@ -10,6 +10,7 @@ import HomeStoreCard from "../components/HomeStoreCard";
 import { StoreContext } from "../context/StoreContext";
 import Constants from 'expo-constants';
 import { Platform } from 'react-native';
+import { storeImages } from '../utils/imageMaps';
 
 const API_URL = Constants.expoConfig.extra.API_URL;
 
@@ -44,23 +45,40 @@ export default function HomeScreen() {
         const loc = await Location.getCurrentPositionAsync({});
         setLocation(loc.coords);
   
-        // Fetch stores from backend
-        const response = await fetch(`${API_URL}/api/stores/allStores`);
-        const data = await response.json();
+        // 🔁 Dummy store data (replace actual fetch for now)
+        const dummyStores = [
+          {
+            id: "1",
+            name: "Jasons Deli Marina Bay Link Mall",
+            distance: "450.0m",
+            address: '8A Marina Blvd, #B2-44/45/48/50, Singapore 018984',
+            image: require("../assets/new1.png"),
+          },
+          {
+            id: "2",
+            name: "Jasons Deli Marina Bay Sands",
+            distance: "500.0m",
+            address: '2 Bayfront Ave, B2-48, Singapore 018972',
+            image: require("../assets/new2.png"),
+          },
+          {
+            id: "3",
+            name: "FairPrice Chinatown Point",
+            distance: "1.5km",
+            address: '133 New Bridge Rd, #B1-01, Singapore 059413',
+            image: require("../assets/fairprice.png"),
+          },
+        ];
   
-        if (data.stores && data.stores.length > 0) {
-          setStores(data.stores);
-          setClosestStore(data.stores[0]); // optionally improve to sort by distance later
-        } else {
-          setStores([]);
-        }
+        setStores(dummyStores);
+        setClosestStore(dummyStores[0]);
       } catch (error) {
-        console.error("Failed to fetch location or stores:", error);
+        console.error("Failed to fetch location or dummy stores:", error);
       }
     };
   
     fetchLocationAndStores();
-  }, []);         
+  }, []);             
   return (
     <View style={styles.container}>
       <ScrollView 
@@ -138,6 +156,7 @@ export default function HomeScreen() {
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#fff" },
