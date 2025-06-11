@@ -10,7 +10,7 @@ import HomeStoreCard from "../components/HomeStoreCard";
 import { StoreContext } from "../context/StoreContext";
 import Constants from 'expo-constants';
 import { Platform } from 'react-native';
-import { storeImages } from '../utils/imageMaps';
+
 
 const API_URL = Constants.expoConfig.extra.API_URL;
 
