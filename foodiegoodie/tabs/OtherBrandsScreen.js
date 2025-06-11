@@ -15,7 +15,6 @@ export default function OtherBrandsScreen() {
 
     useEffect(() => {
             (async () => {
-              // Dummy data for now, replace with API fetch
               const dummyOtherItems = [
                 {
                     id: "1",
