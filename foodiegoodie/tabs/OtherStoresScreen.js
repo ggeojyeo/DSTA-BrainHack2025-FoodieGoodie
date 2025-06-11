@@ -128,17 +128,17 @@ export default function OtherStoresScreen() {
             const dummyOtherStores = [
                 {
                     id: "1",
-                    name: "Sheng Siong",
+                    name: "Scarlett Supermarket Flagship",
                     stock: 61,
-                    address: '872C Tampines Street 86, #02-01, Singapore 523872',
-                    image: require("../assets/shengsiongv2.png"),
+                    address: '1 Park Rd, #02-70 Peoples Park Complex, Singapore 059108',
+                    image: require("../assets/ScarlettFlagship.jpg"),
                 },
                 {
                     id: "2",
-                    name: "Cold Storage",
+                    name: "FairPrice Tanjong Pagar",
                     stock: 99,
-                    address: '10 Tampines Central 1, B1-01/02, Singapore 529536',
-                    image: require("../assets/coldstorage.png"),
+                    address: '1 Tanjong Pagar Plz, #01-01, Singapore 082001',
+                    image: require("../assets/fairprice_tp.jpg"),
                 },
             ];
 

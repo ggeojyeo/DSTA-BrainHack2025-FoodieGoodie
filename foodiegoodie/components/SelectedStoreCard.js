@@ -44,7 +44,9 @@ export default function SelectedStoreCard({ itemName, itemStock, itemImage, item
                 <TouchableOpacity style={styles.otherStoresBtn} onPress={() => navigation.navigate("OtherStoresScreen")}>
                     <Text>Other Stores</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.otherBrandsBtn} onPress={() => {navigation.navigate("OtherBrandsScreen")}}>
+                <TouchableOpacity style={styles.otherBrandsBtn} onPress={() => {navigation.navigate("OtherBrandsScreen", {
+                    itemName: itemName,
+                })}}>
                 <Text style={{color: 'white'}}>Other Brands</Text>
                 </TouchableOpacity>
             </View>

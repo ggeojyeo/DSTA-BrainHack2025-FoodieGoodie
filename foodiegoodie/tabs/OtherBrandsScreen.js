@@ -12,36 +12,98 @@ export default function OtherBrandsScreen() {
     const [otherBrandsSearch, setOtherBrandsSearch] = useState("");
     const navigation = useNavigation();
     const [items, setItems] = useState([]);
+////
+    const route = useRoute();
+    const { itemName } = route.params;
+
+    // Map item names to categories
+  const categoryMap = {
+    "Soya Sauce": "soya_sauce",
+    "Milo Powder 1kg": "chocolate_powder",
+    "Pasar Fresh Eggs": "eggs"
+  };
+
+  const category = categoryMap[itemName] || "unknown";
 
     useEffect(() => {
             (async () => {
-              const dummyOtherItems = [
-                {
-                    id: "1",
-                    name: "N&N Big Fresh Eggs",
-                    stock: 50,
-                    country: 'Singapore',
-                    image: require("../assets/M&NBigFreshEggs.png")
-                },
-                {
-                    id: "2",
-                    name: "Seng Choon Eggs",
-                    stock: 38,
-                    country: 'Singapore',
-                    image: require("../assets/sengChoonEggs.png"),
-                },
-                {
-                    id: "3",
-                    name: "Chef Quail Eggs",
-                    stock: 71,
-                    country: 'Singapore',
-                    image: require("../assets/chefQuailEggs.png"),
-                },
-              ];
+const dummyOtherItems = {
+  soya_sauce: [
+    {
+      id: "1",
+      name: "Tiger Brand Soya Sauce",
+      stock: 25,
+      country: "Singapore",
+      image: require("../assets/soya_tiger1.png"),
+    },
+    {
+      id: "2",
+      name: "Standard Grade Light Soya Sauce",
+      stock: 40,
+      country: "Singapore",
+      image: require("../assets/soya_green2.png"),
+    },
+    {
+      id: "3",
+      name: "Nanyang Sauce",
+      stock: 33,
+      country: "Singapore",
+      image: require("../assets/soya_nanyang3.jpg"),
+    },
+  ],
+  chocolate_powder: [
+    {
+      id: "1",
+      name: "Cadbury Hot Chocolate Drink",
+      stock: 70,
+      country: "Indonesia",
+      image: require("../assets/milo_cadbury1.png"),
+    },
+    {
+      id: "2",
+      name: "Hershey's Cocoa",
+      stock: 22,
+      country: "United States of America",
+      image: require("../assets/milo_hershey2.png"),
+    },
+    {
+      id: "3",
+      name: "Lindt Hot Chocolate Drink Powder",
+      stock: 55,
+      country: "UK",
+      image: require("../assets/milo_lindt3.png"),
+    },
+  ],
+  eggs: [
+        {
+            id: "1",
+            name: "N&N Big Fresh Eggs",
+            stock: 50,
+            country: 'Singapore',
+            image: require("../assets/M&NBigFreshEggs.png")
+        },
+        {
+            id: "2",
+            name: "Seng Choon Eggs",
+            stock: 38,
+            country: 'Singapore',
+            image: require("../assets/sengChoonEggs.png"),
+        },
+        {
+            id: "3",
+            name: "Chef Quail Eggs",
+            stock: 71,
+            country: 'Singapore',
+            image: require("../assets/chefQuailEggs.png"),
+        },
+  ],
+  unknown: [],
+};
+
         
-              setItems(dummyOtherItems);
-            })();
-          }, []);
+setItems(dummyOtherItems[category] || []);            })();
+          }, [category]);
+
 
     return (
         <View style={styles.container}>
