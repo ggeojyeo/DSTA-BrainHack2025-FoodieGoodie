@@ -8,7 +8,7 @@
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "extra": {
-      "API_URL": "http://172.20.10.3:5000"
+      "API_URL": "http://172.20.10.2:5000"
     },
     "splash": {
       "image": "./assets/FoodieGoodieLogo/withoutName.png",
