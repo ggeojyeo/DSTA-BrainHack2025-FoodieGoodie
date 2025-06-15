@@ -2,7 +2,7 @@
 
 ---
 
-### **This project was developed by Freakgineers from NTU as part of BrainHack 2025 – CODE_EXP, where we placed among the Top 8 teams, organised by DSTA**
+### **This project was developed by Freakgineers from NTU as part of BrainHack 2025 – CODE_EXP organised by DSTA, where we placed among the Top 8 teams.**
 
 ---
 
