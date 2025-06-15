@@ -3,7 +3,7 @@
 ---
 
 ## **Created by:**
-Freakgineers
+Freakgineers (Nanyang Technological University)
 
 ---
 
