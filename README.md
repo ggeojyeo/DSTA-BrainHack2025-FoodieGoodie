@@ -11,7 +11,7 @@ FoodieGoodie is a mobile app that empowers Singaporeans to tackle food insecurit
 
 --- 
 
-## **Contributers:**
+## **Our Team**
 | **Name**              | **Github Profile**                            | **Role**          |
 |-----------------------|-----------------------------------------------|-------------------|
 |   Adolphus            |[@ggeojyeo](https://github.com/ggeojyeo)       |   Backend         |
