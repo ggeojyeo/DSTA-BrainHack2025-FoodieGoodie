@@ -3,7 +3,7 @@
 ---
 
 ## **Created by:**
-Freakgineers (Nanyang Technological University)
+Freakgineers (Nanyang Technological University) for our BrainHack '25 submission for CODE_EXP organised by DSTA 
 
 ---
 
